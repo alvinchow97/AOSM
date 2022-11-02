@@ -1,0 +1,46 @@
+Admin,Delivery Staff, Registered Customer
+
+User
+{user,password} - all for personal - common
+
+Order
+{orderId,quantity, itemId, itemPrice, orderTotalPrice, user}
+
+Item
+{itemId, itemDescription(Item Details), itemUnitPrice, Category, stockQuantity}
+
+Delivery
+{deliveryId, orderId, feedback (single feedback), status}
+
+Payment
+{paymentId, orderId (from orderId we can know total)}
+
+
+Login Module - done - but must placed the original function at __Main__
+
+Item Module
+1. Insert Item
+2. Delete Item
+3. Display Item
+4. Update Item ? Update itemUnitPrice, stockQuantity, Category, itemDescript
+1. Create Category
+2. Delete Category ? Delete category means all item under the category will be deleted.
+3. Fetch item under the category
+
+Order
+1. Create order ? itemId, itemPrice, orderTotalPrice -> itemPrice x itemQuantity, user (who order) ? Reduce stock quantity
+2. Delete order ? orderId ? Increase back stock quantity
+3. Edit order ? itemQuantiy, itemId -> Item
+4. View Order
+
+
+Payment
+1. Create payment ? orderId
+2. Delete payment ? orderId, order must be deleted also.
+
+
+Delivery
+1. Create delivery ? orderId, personal, feedback(blank), status - NEW
+2. Delete delivery ? Cancel ? Update status - cancel
+3. Update delivery ? status
+4. Assign/Create feedback
