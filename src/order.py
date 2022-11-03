@@ -1,0 +1,56 @@
+# TODO SECOND PRIORITY
+# TODO Redefine {orderId,quantity, itemId, itemPrice, orderTotalPrice, user} to {orderId,quantity, itemId, orderTotalPrice, user}
+# FOLLOW RULES OF CRUD, CREATE/READ/UPDATE/DELETE
+
+def createOrder(itemId, itemQuantity, staff=""):
+    # CREATE NEW FUNCTION UNDER ITEM READ TO FIND ITEM PRICE BY QUANTITY
+
+    # OPEN ORDER.TXT
+    # FIND THE LATEST ORDER ID, ON TOP OF THAT, +1 TO THE ID
+    # MAKE A LIST OF ORDER TO APPEND
+    # WRITE INTO ORDER.TXT
+
+    # FINAL STEP, CALL ITEM updateStockQuantityByReduce to reduce the stock quantity
+    # RETURN TRUE IF DONE, FALSE IF FAILED
+    return None
+
+
+def deleteOrder(orderId):
+    # OPEN AND READ order.txt
+    # FIND THE ROW OF DATA BASED ON ORDERID
+    # REMOVE THE ROW OF DATA FROM THE ARRAY
+    # WRITE IN BACK TO THE FILE
+
+    # CREATE NEW FUNCTION UNDER ITEM TO UPDATE BACK THE QUANTITY
+    # CREATE A VARIABLE EARLIER TO HOLD THE QUANTITY
+    # EXECUTE THE FUNCTION WITH PARAMETER ITEMID, QUANTITY
+    return None
+
+
+def editOrderByQuantity(orderId, newQuantity):
+    # OPEN AND READ ORDER.TXT
+    # FIND THE ROW OF DATA USING ORDERID
+    # UPDATE THE QUANTITY AND TOTAL PRICE (itemUnitPrice x quantity)
+
+    # WRITE BACK INTO THE FILE
+    # RETURN TRUE IF DONE, FALSE IF FAIL
+    return None
+
+
+def viewOrder():
+    # OPEN AND READ ORDER.TXT
+    # DESIGN UI INTERFACE, LOOP INTERFACE USING FOR LOOP
+    # IF PRESS BACK, THEN BACK TO PARENT MENU
+    return None
+
+
+def viewOrderByOrderId(orderId):
+    # OPEN AND READ ORDER.TXT
+    # DESIGN UI INTERFACE
+    # FIND THE ROW OF DATA USING ORDERID
+    # IF PRESS BACK, THEN BACK TO PARENT MENU
+    return None
+
+
+# TODO MISC
+# SEE IF GOT ANY MISC FUNCTION, PUT HERE

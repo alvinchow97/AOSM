@@ -5,6 +5,16 @@
 
 def createItem(item):
     # OPEN FILE, READ FILE
+    items = openItemFile()
+    highestId = 0
+
+    for i in items:
+        if (int(i[0]) > highestId):
+            highestId = int(i[0])
+
+    highestId = highestId + 1
+    itemString = "\n" + str(highestId) + ";" + "empty item description" + ";" + str(5) + ";" + str(5) + ";" + str(20)
+    writeItemFile(itemString)
     # GET THE LATEST ITEM ID
     # ON TOP OF LATEST ITEM ID, +1
     # WRITE INTO THE FILE
@@ -142,11 +152,12 @@ def openCategoryFile():
 
 
 def writeItemFile(writeFile):
+    writeFileDb = open("db/item.txt", "a")
+    writeFileDb.write(writeFile)
     # FIND THE FILE, READ THE FILE
     # WRITE THE FILE
     # RETURN TRUE IF GOOD, FALSE IF FAILED
     return None
-
 
 def writeCategoryFile(writeFile):
     # FIND THE FILE, READ THE FILE
@@ -155,4 +166,4 @@ def writeCategoryFile(writeFile):
     return None
 
 # TODO MISC, put test function here to try
-openCategoryFile()
+createItem([]);
