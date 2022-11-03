@@ -1,2 +1,2 @@
-1;item description;15;Food;50
-2;item description;5;Drink;20
+1;item description;15;1;50
+2;item description;5;2;20
