@@ -1,0 +1,11 @@
+
+Branch naming : [DD-MM-YYYY-NAME-(NUMBER OF BRANCH COMMITTED ON THAT DAY)]
+Branch naming example:
+[03-11-2022-Alvin-1] - First branch committed/created in the morning
+[03-11-2022-Alvin-2] - Second branch commiteed/created in the morning
+
+Always use OOP (Object-Oriented Programming)
+- Always priority function that reusable (see how I reuse openUserFile in login.py
+- Always modularise your module (item/user/payment/order), treat them as 1 part together
+
+
