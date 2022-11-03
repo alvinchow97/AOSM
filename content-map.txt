@@ -15,6 +15,11 @@ Delivery
 Payment
 {paymentId, orderId (from orderId we can know total)}
 
+#MISC, not module
+
+Category
+{categoryId, categoryName}
+
 
 Login Module - done - but must placed the original function at __Main__
 
