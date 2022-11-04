@@ -1,3 +1,6 @@
 1;item description;15;1;50
 2;item description;5;2;20
 3;empty item description;5;5;20
+4;empty item description;5;5;20
+5;empty item description;5;5;20
+6;empty item description;5;5;20

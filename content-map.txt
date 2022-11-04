@@ -4,7 +4,7 @@ User
 {user,password} - all for personal - common
 
 Order
-{orderId,quantity, itemId, itemPrice, orderTotalPrice, user}
+{orderId,itemId, quantity, orderTotalPrice, status, user}
 
 Item
 {itemId, itemDescription(Item Details), itemUnitPrice, Category, stockQuantity}
