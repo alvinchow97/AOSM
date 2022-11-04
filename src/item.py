@@ -34,8 +34,13 @@ def viewItem():
     # OPEN FILE, READ FILE
     items = openItemFile()
     # RETURN THE ITEM, REPLACE THE NONE BELOW
-
+    printString = ""
     # TODO , do the UI Interface
+    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
+    print("                     This is Item List                         ")
+    for item in items:
+        printString += str(item[0] + " " + item[1]) + "\n"
+    print(printString)
 
     # Press back, back to menu (refer to the function below)
 
@@ -59,8 +64,9 @@ def updateItemUnitPrice(itemId, updatedUnitPrice):
     itemsLocated = []
     for item in items:
         if(item[0] == str(1)):
-            item[2] = str(88) # update itemUnitPrice happen here
-    writeItemFileByReplace(items,1)
+            item[3] = str(10) # update itemUnitPrice happen here
+
+    writeItemFileByReplace(items)
     # FIND THE INDEX WHERE THE ITEM IS LOCATED
     # UPDATE THE LATEST UNIT PRICE
 
@@ -139,17 +145,12 @@ def updateItemDescription(itemId, newDescription):
 
 
 def deleteItem(itemId):
-    index = 0
-    items = openItemFile()
-    # TODO replace the 1 with the itemId later
-    for item in items:
-        if (item[0] == str(1)):
-            items.pop(index)
-        index = index + 1
-    writeItemFileByReplace(items, 1)
     # OPEN FILE, READ FILE
+    items = openItemFile()
     # FIND THE INDEX WHERE THE ITEM IS LOCATED
     # DELETE THE ROW OF THE ITEM
+
+
     # WRITE BACK TO THE FILE
     # RETURN TRUE IF DONE GOOD, FALSE IF FAILED
     return None
@@ -158,33 +159,6 @@ def deleteItem(itemId):
 def deleteCategory(categoryId):
     # TODO HARDEST PART IN THIS MODULE
     # OPEN CATEGORY FILE, READ FILE
-    categories = openCategoryFile()
-    items = openItemFile()
-
-    replacedItems = items.copy()
-    replacedCategories = categories.copy()
-
-    itemIndex = 0
-    categoryIndex = 0
-    # TODO replace 1 with categoryId
-    for category in categories:
-        if(category[0] == str(1)):
-            # found category, check any items if got same category, if got, then delete
-            for item in items:
-                if(item[3] == str(1)):
-                    if(len(replacedItems) == len(items)):
-                        replacedItems.pop(itemIndex)
-                    else:
-                        replacedItems.pop(itemIndex-1)
-                itemIndex = itemIndex + 1
-            writeItemFileByReplace(replacedItems, 1)
-
-            if(len(replacedCategories) == len(categories)):
-                categories.pop(categoryIndex)
-            else:
-                categories.pop(categoryIndex - 1)
-        categoryIndex = categoryIndex + 1
-    writeCategoryFileByReplace(categories,1)
     # OPEN ITEM FILE, READ FILE
     # FIND IF GOT ANY ITEM IS IN THIS CATEGORY
     # IF YES, DELETE THEN CONTINUE TO NEXT STEP, IF NOT, CONTINUE TO NEXT STEP
@@ -268,20 +242,7 @@ def writeCategoryFile(writeCategory,writeMode):
     # FIND THE FILE, READ THE FILE
     # WRITE THE FILE
     # RETURN TRUE IF GOOD, FALSE IF FAILED
-    writeString = ""
-    count = 0
-    for item in writeCategory:
-        if (writeMode == 1):
-            writeString += item[0] + ";" + item[1] + ";" + item[2] + ";" + item[3] + ";" + item[4]
-        elif (writeMode == 2):
-            if (count == 0):
-                writeString += item[0] + ";" + item[1] + ";" + item[2] + ";" + item[3] + ";" + item[4] + "\n"
-            else:
-                writeString += item[0] + ";" + item[1] + ";" + item[2] + ";" + item[3] + ";" + item[4]
-        count = count + 1
-    writeFileDb = open("db/category.txt", "w")
-    writeFileDb.write(writeString)
     return None
 
 # TODO MISC, put test function here to try
-deleteCategory([])
+openItemFile()
