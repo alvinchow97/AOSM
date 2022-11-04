@@ -53,9 +53,18 @@ def viewItemByCategory(categoryId):
 
 
 def updateItemUnitPrice(itemId, updatedUnitPrice):
+    # TODO assume itemId is 1 , and updateUnitPrice is 10
     # OPEN FILE, READ FILE
+    items = openItemFile()
+    itemsLocated = []
+    for item in items:
+        if(item[0] == str(1)):
+            item[3] = str(10) # update itemUnitPrice happen here
+
+    writeItemFileByReplace(items)
     # FIND THE INDEX WHERE THE ITEM IS LOCATED
     # UPDATE THE LATEST UNIT PRICE
+
     # WRITE BACK TO THE FILE
     # RETURN TRUE IF DONE GOOD, FALSE IF FAILED
     return None
@@ -159,6 +168,18 @@ def writeItemFile(writeFile):
     # RETURN TRUE IF GOOD, FALSE IF FAILED
     return None
 
+def writeItemFileByReplace(writeItem):
+    writeString = ""
+    count = 0
+    maxCount = len(writeItem)
+    for item in writeItem:
+        if (count == 0 or count >= maxCount):
+            writeString += item[0] + ";" + item[1] + ";" + item[2] + ";" + item[3] + ";" + item[4]
+        else:
+            writeString += "\n" + item[0] + ";" + item[1] + ";" + item[2] + ";" + item[3] + ";" + item[4]
+
+    writeFileDb = open("db/item.txt", "w")
+    writeFileDb.write(writeString)
 def writeCategoryFile(writeFile):
     # FIND THE FILE, READ THE FILE
     # WRITE THE FILE
@@ -166,4 +187,4 @@ def writeCategoryFile(writeFile):
     return None
 
 # TODO MISC, put test function here to try
-createItem([]);
+updateItemUnitPrice([],[]);
