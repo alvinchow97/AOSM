@@ -36,10 +36,17 @@ def viewItem():
     # RETURN THE ITEM, REPLACE THE NONE BELOW
 
     # TODO , do the UI Interface
+    printString = ""
+    # TODO , do the UI Interface
+    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
+    print("                     This is Item List                         ")
+    for item in items:
+        printString += str(item[0] + " " + item[1]) + "\n"
+    print(printString)
 
     # Press back, back to menu (refer to the function below)
 
-    return items
+    return None
 
 
 def viewItemByCategory(categoryId):
