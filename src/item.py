@@ -45,7 +45,7 @@ def viewItem():
     print(printString)
 
     # Press back, back to menu (refer to the function below)
-
+    #HanBin changes
     return None
 
 
