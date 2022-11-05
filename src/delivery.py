@@ -1,8 +1,8 @@
-#TODO FOURTH PRIORITY
+# TODO FOURTH PRIORITY
 
-#TODO FOLLOW THE RULE OF CRUD, CREATE/READ/UPDATE/DELETE
+# TODO FOLLOW THE RULE OF CRUD, CREATE/READ/UPDATE/DELETE
 
-def createDelivery(orderId,user=""):
+def createDelivery(orderId, user=""):
     # OPEN AND READ DELIVERY FILE
     # FIND THE LATEST ID, ADD 1 TO IT
     # PERSONAL CAN BE BLANK IF PASS IN NOTHING
@@ -18,7 +18,7 @@ def viewDelivery():
     return None
 
 
-def assignDeliveryStaff(deliveryId,userId):
+def assignDeliveryStaff(deliveryId, userId):
     # READ AND OPEN FILE OF DELIVERY
     # READ AND OPEN FILE OF USER
     # LET THE USER KEY IN USERID
@@ -27,7 +27,7 @@ def assignDeliveryStaff(deliveryId,userId):
     return None
 
 
-def createDeliveryFeedback(deliveryId,feedback):
+def createDeliveryFeedback(deliveryId, feedback):
     # READ AND OPEN FILE OF DELIVERY
     # FIND THE ROW OF DELIVERY INFO BASED ON THE DELIVERYID
     # WRITE INTO THE FILE AND SAVE THE FILE

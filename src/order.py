@@ -1,12 +1,10 @@
 # TODO SECOND PRIORITY
 # TODO Redefine {orderId,quantity, itemId, itemPrice, orderTotalPrice, user} to {orderId,quantity, itemId, orderTotalPrice, user}
 # FOLLOW RULES OF CRUD, CREATE/READ/UPDATE/DELETE
-from item import openItemFile,updateItemStockQuantity
-def createOrder(order):
-    # CREATE NEW FUNCTION UNDER ITEM READ TO FIND ITEM PRICE BY QUANTITY
-    # OPEN ORDER.TXT
-    # FIND THE LATEST ORDER ID, ON TOP OF THAT, +1 TO THE ID
+from item import openItemFile, updateItemStockQuantity, writeItemFileByReplace
 
+
+def createOrder(order):
     orders = openOrderFile()
     highestId = 0
 
@@ -18,42 +16,52 @@ def createOrder(order):
 
     items = openItemFile()
     itemLocated = []
-    # replace the 1 with item id later
+    # TODO replace the 1 with item id later
     for i in items:
-        if(i[0] == str(1)):
+        if (i[0] == str(1)):
             itemLocated = i
-    # OPEN ITEM FILE AND READ THE FILE TO FIND UNIT PRICE BY ITEM ID
     unitPriceByItemId = itemLocated[2]
-    # MAKE A LIST OF ORDER TO APPEND
-    orderString = "\n" + str(highestId) + ";" + str(1) + ";" + str(1) + ";" + str(unitPriceByItemId * 1) + ";" + "NEW" + ";" + str(1)
+    orderString = "\n" + str(highestId) + ";" + str(1) + ";" + str(1) + ";" + str(
+        unitPriceByItemId * 1) + ";" + "NEW" + ";" + str(1)
     writeOrderFile(orderString)
-    # WRITE INTO ORDER.TXT
-
     # FINAL STEP, CALL ITEM updateStockQuantityByReduce to reduce the stock quantity
     updateItemStockQuantity(1, 3)
-    # RETURN TRUE IF DONE, FALSE IF FAILED
     return None
 
 
 def deleteOrder(orderId):
-    # OPEN AND READ order.txt
-    # FIND THE ROW OF DATA BASED ON ORDERID
-    # REMOVE THE ROW OF DATA FROM THE ARRAY
-    # WRITE IN BACK TO THE FILE
-
-    # CREATE NEW FUNCTION UNDER ITEM TO UPDATE BACK THE QUANTITY
-    # CREATE A VARIABLE EARLIER TO HOLD THE QUANTITY
-    # EXECUTE THE FUNCTION WITH PARAMETER ITEMID, QUANTITY
+    index = 0
+    orders = openOrderFile()
+    # TODO replace the 1 with the orderId later
+    for order in orders:
+        if (order[0] == str(1)):
+            orders.pop(index)
+        index = index + 1
+    writeOrderFileByReplace(orders, 1)
     return None
 
 
 def editOrderByQuantity(orderId, newQuantity):
-    # OPEN AND READ ORDER.TXT
-    # FIND THE ROW OF DATA USING ORDERID
+    orders = openOrderFile()
+    items = openItemFile()
+    # TODO replace 1 with orderId, and 2 with newQuantity (4 places)
+    for order in orders:
+        if (order[0] == str(1)):
+            for item in items:
+                if (item[0] == order[1]):
+                    # update the orderTotalPrice
+                    order[3] = str(int(2) * int(item[2]))
+                    # update the stock quantity determine by the orderQuantity edited
+                    if(int(2) > int(order[2])):
+                        item[4] = str(int(item[4]) + -(int(2) - int(order[2])))
+                    else:
+                        item[4] = str(int(item[4]) + int(order[2]) - int(4))
+            # now only update the quantity, if put before update item stock will patch the quantity
+            order[2] = str(2)
+    writeOrderFileByReplace(orders, 1)
+    writeItemFileByReplace(items, 1)
     # UPDATE THE QUANTITY AND TOTAL PRICE (itemUnitPrice x quantity)
-
-    # WRITE BACK INTO THE FILE
-    # RETURN TRUE IF DONE, FALSE IF FAIL
+    # UPDATE THE ITEM STOCK QUANTITY DETERMINED BY THE SCENARIO
     return None
 
 
@@ -75,22 +83,37 @@ def viewOrderByOrderId(orderId):
 # TODO MISC
 # SEE IF GOT ANY MISC FUNCTION, PUT HERE
 def openOrderFile():
-    # DO THE OPEN FILE READ FILE ACTION HERE
     orders = []
     orderDb = db = open("db/order.txt", "r")
     for i in orderDb:
         orderId, itemId, quantity, orderTotalPrice, status, user = i.split(";")
         orders.append([orderId, itemId, quantity, orderTotalPrice, status, user])
-    # THEN REPLACE THE COMMENT ABOVE
-    # RETURN WHAT INSIDE THE FILE
     return orders
+
 
 def writeOrderFile(writeFile):
     writeFileDb = open("db/order.txt", "a")
     writeFileDb.write(writeFile)
-    # FIND THE FILE, READ THE FILE
-    # WRITE THE FILE
-    # RETURN TRUE IF GOOD, FALSE IF FAILED
     return None
 
-createOrder([])
+
+def writeOrderFileByReplace(writeOrder, writeMode):
+    writeFileDb = open("db/order.txt", "w")
+    # TODO writeMode = 1/2, 1 no need + \n
+    writeString = ""
+    count = 0
+    for order in writeOrder:
+        if (writeMode == 1):
+            writeString += order[0] + ";" + order[1] + ";" + order[2] + ";" + order[3] + ";" + order[4] + ";" + order[5]
+        elif (writeMode == 2):
+            if (count == 0):
+                writeString += order[0] + ";" + order[1] + ";" + order[2] + ";" + order[3] + ";" + order[4] + ";" + \
+                               order[5] + "\n"
+            else:
+                writeString += order[0] + ";" + order[1] + ";" + order[2] + ";" + order[3] + ";" + order[4] + ";" + \
+                               order[5]
+        count = count + 1
+    writeFileDb.write(writeString)
+
+# TODO MISC put test function under here
+deleteOrder([])

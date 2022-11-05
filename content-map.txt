@@ -7,7 +7,7 @@ Order
 {orderId,itemId, quantity, orderTotalPrice, status, user}
 
 Item
-{itemId, itemDescription(Item Details), itemUnitPrice, Category, stockQuantity}
+{itemId, itemDescription, itemUnitPrice, Category, stockQuantity}
 
 Delivery
 {deliveryId, orderId, feedback (single feedback), status}
