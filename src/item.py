@@ -4,32 +4,24 @@
 # TODO CRUD - CREATE/READ/UPDATE/DELETE, do this in sequence
 
 def createItem(item):
+    # OPEN FILE, READ FILE
     items = openItemFile()
     highestId = 0
+
     for i in items:
         if (int(i[0]) > highestId):
             highestId = int(i[0])
+
     highestId = highestId + 1
     itemString = "\n" + str(highestId) + ";" + "empty item description" + ";" + str(5) + ";" + str(5) + ";" + str(20)
     writeItemFile(itemString)
+    # GET THE LATEST ITEM ID
+    # ON TOP OF LATEST ITEM ID, +1
+    # WRITE INTO THE FILE
     return None
 
 
 def createCategory(category):
-    categoryDb = openCategoryFile()
-    highestId = 0
-    categoryString = ""
-    for i in categoryDb:
-        if (int(i[0]) >= highestId):
-            highestId = int(i[0]) + 1
-
-    categoryString = str(highestId) + ";" + "Electronics"
-    writeCategoryFile(categoryString)
-    # GET THE LATEST CATEGORY ID
-    # ON TOP OF THE LATEST CATEGORY ID, +1
-    # WRITE INTO THE FILE
-
-    return None
     # OPEN FILE, READ FILE
     # GET THE LATEST CATEGORY ID
     # ON TOP OF THE LATEST CATEGORY ID, +1
@@ -126,6 +118,7 @@ def deleteItem(itemId):
     writeItemFileByReplace(items, 1)
     # DELETE THE ROW OF THE ITEM
     # WRITE BACK TO THE FILE
+    # RETURN TRUE IF DONE GOOD, FALSE IF FAILED
     return None
 
 
@@ -162,6 +155,7 @@ def deleteCategory(categoryId):
     # FIND IF GOT ANY ITEM IS IN THIS CATEGORY
     # IF YES, DELETE THEN CONTINUE TO NEXT STEP, IF NOT, CONTINUE TO NEXT STEP
     # AFTER ITEM UNDER THE CATEGORY IS DELETED, ONLY DELETE THE CATEGORY
+    # DELETE CATEGORY
     return None
 
 
@@ -180,6 +174,8 @@ def openItemFile():
     for i in itemDb:
         itemId, itemDescription, itemUnitPrice, categoryId, stockQuantity = i.split(";")
         items.append([itemId, itemDescription, itemUnitPrice, categoryId, stockQuantity])
+    # THEN REPLACE THE COMMENT ABOVE
+    # RETURN WHAT INSIDE THE FILE
     return items
 
 
