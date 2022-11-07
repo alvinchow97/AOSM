@@ -67,7 +67,12 @@ def editOrderByQuantity(orderId, newQuantity):
 
 def viewOrder():
     # OPEN AND READ ORDER.TXT
+    orders = openOrderFile()
     # DESIGN UI INTERFACE, LOOP INTERFACE USING FOR LOOP
+    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
+    print("                     View Order                         ")
+    for order in orders:
+        print += order[0] + " " + order[1]  + " " + order[2] + " " + order[3] + " " + order[4] + " " + order[5] + "\n"
     # IF PRESS BACK, THEN BACK TO PARENT MENU
     return None
 
