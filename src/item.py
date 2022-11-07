@@ -22,11 +22,25 @@ def createItem(item):
 
 
 def createCategory(category):
-    # OPEN FILE, READ FILE
+    categoryDb = openCategoryFile()
+    highestId = 0
+    categoryString = ""
+    for i in categoryDb:
+        if (int(i[0]) >= highestId):
+            highestId = int(i[0]) + 1
+
+    categoryString = str(highestId) + ";" + "Electronics"
+    writeCategoryFile(categoryString)
     # GET THE LATEST CATEGORY ID
     # ON TOP OF THE LATEST CATEGORY ID, +1
     # WRITE INTO THE FILE
 
+    return None
+    # OPEN FILE, READ FILE
+    # GET THE LATEST CATEGORY ID
+    # ON TOP OF THE LATEST CATEGORY ID, +1
+    # WRITE INTO THE FILE
+    return None
 
 
 def viewItem():
@@ -298,4 +312,3 @@ def writeCategoryFile(writeCategory,writeMode):
     return None
 
 # TODO MISC, put test function here to try
-
