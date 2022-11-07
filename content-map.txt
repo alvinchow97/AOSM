@@ -10,10 +10,10 @@ Item
 {itemId, itemDescription, itemUnitPrice, Category, stockQuantity}
 
 Delivery
-{deliveryId, orderId, feedback (single feedback), status}
+{deliveryId, orderId, paymentId, feedback (single feedback), status}
 
 Payment
-{paymentId, orderId (from orderId we can know total)}
+{paymentId, orderId (from orderId we can know total), status}
 
 #MISC, not module
 
