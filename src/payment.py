@@ -3,13 +3,15 @@
 # FOLLOW RULES OF CRUD, CREATE/READ/UPDATE/DELETE
 
 def createPayment(orderId):
-    # OPEN FILE AND READ FILE FOR ORDER
-    # SEARCH THE ORDER BASED ON THE ORDER ID
-    # CHECK THE ORDER PAYMENT STATUS IF UNPAID
-    # IS YES, THEN PROCEED, IF PAID, THEN TELL THE USER TO IS PAID AND ASK IF WANT TO CONTINUE
-    # GET THE TOTAL AND PROMPT TO THE USER IF WANT TO PAY
-    # IF THE USER DIDN'T WANT TO PAY, UPDATE STATUS OF THE ORDER TO UNPAID
-    # IF THE USER WANT TO PAY, ASK THE USER TO KEY IN TOTAL PAID, THEN UPDATE THE STATUS TO PAID OF ORDER
+    payments = openPaymentFile()
+    highestId = 0
+    for i in payments:
+        if (int(i[0]) > highestId):
+            highestId = int(i[0])
+    highestId = highestId + 1
+    # TODO payment string below need redefine
+    paymentString = "\n" + str(highestId) + ";" + "empty item description" + ";" + str(5) + ";" + str(5) + ";" + str(20)
+    writePaymentFile(paymentString)
     return None
 
 
@@ -20,7 +22,46 @@ def viewPayment():
 
 
 def deletePayment(paymentId):
-    # READ FILE OF PAYMENT
-    # IDENTIFY WHICH ROW OF THE PAYMENT IS
-    # DELETE THE PAYMENT, WRITE INTO FILE
+    index = 0
+    payments = openPaymentFile()
+    # TODO replace the 1 with the orderId later
+    for payment in payments:
+        if (payment[0] == str(1)):
+            payment.pop(index)
+        index = index + 1
+    writePaymentFileByReplace(payment, 1)
     return None
+
+
+def openPaymentFile():
+    payments = []
+    paymentDb = db = open("db/payment.txt", "r")
+    for i in paymentDb:
+        paymentId, orderId, status = i.split(";")
+        payments.append([paymentId, orderId, status])
+    return payments
+
+
+def writePaymentFile(writeFile):
+    writeFileDb = open("db/payment.txt", "a")
+    writeFileDb.write(writeFile)
+    return None
+
+
+def writePaymentFileByReplace(writePayment, writeMode):
+    writeFileDb = open("db/payment.txt", "w")
+    # TODO writeMode = 1/2, 1 no need + \n
+    writeString = ""
+    count = 0
+    for payment in writePayment:
+        if (writeMode == 1):
+            writeString += payment[0] + ";" + payment[1] + ";" + payment[2]
+        elif (writeMode == 2):
+            if (count == 0):
+                writeString += payment[0] + ";" + payment[1] + ";" + payment[2] + "\n"
+            else:
+                writeString += payment[0] + ";" + payment[1] + ";" + payment[2]
+        count = count + 1
+    writeFileDb.write(writeString)
+
+
