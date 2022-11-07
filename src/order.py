@@ -79,8 +79,15 @@ def viewOrder():
 
 def viewOrderByOrderId(orderId):
     # OPEN AND READ ORDER.TXT
+    orders = openOrderFile()
     # DESIGN UI INTERFACE
+    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
+    print("                   This is Order List                       ")
     # FIND THE ROW OF DATA USING ORDERID
+    for order in orders:
+        order[1] = OrderByOrderId
+        OrderByOrderId = int(order[1]) + str(";" + order[2]) + "\n"
+        print(OrderByOrderId)
     # IF PRESS BACK, THEN BACK TO PARENT MENU
     return None
 
@@ -121,4 +128,4 @@ def writeOrderFileByReplace(writeOrder, writeMode):
     writeFileDb.write(writeString)
 
 # TODO MISC put test function under here
-deleteOrder([])
+    createOrder([])

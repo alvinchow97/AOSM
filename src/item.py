@@ -65,9 +65,9 @@ def viewItem():
 
 def viewItemByCategory(categoryId, category):
     # OPEN ITEM FILE, READ FILE
-    items = openItemFile()
+    items = openItemFile(item.txt)
     # OPEN CATEGORY FILE, READ FILE
-    categoryDb = openCategoryFile()
+    categoryDb = openCategoryFile(category.txt)
     # DISPLAY WHAT IS THE CATEGORY NAME
     print(categoryId)
     # FETCH THE ITEM UNDER THE CATEGORY ID
