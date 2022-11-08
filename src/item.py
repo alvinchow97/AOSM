@@ -40,7 +40,7 @@ def createCategory(category):
     # GET THE LATEST CATEGORY ID
     # ON TOP OF THE LATEST CATEGORY ID, +1
     # WRITE INTO THE FILE
-    return None
+
 
 
 def viewItem():
@@ -312,3 +312,4 @@ def writeCategoryFile(writeCategory,writeMode):
     return None
 
 # TODO MISC, put test function here to try
+

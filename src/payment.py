@@ -5,19 +5,45 @@
 def createPayment(orderId):
     payments = openPaymentFile()
     highestId = 0
+
     for i in payments:
         if (int(i[0]) > highestId):
             highestId = int(i[0])
     highestId = highestId + 1
     # TODO payment string below need redefine
-    paymentString = "\n" + str(highestId) + ";" + "empty item description" + ";" + str(5) + ";" + str(5) + ";" + str(20)
+    payments = openPaymentFile()
+    paymentLocated = []
+
+    for i in payments:
+        if (i[0] == str(1)):
+            paymentLocated = i
+    paymentByOrderId = paymentLocated[2]
+    paymentString = "\n" + str(highestId) + ";" + str(1) + ";" + str(1) + ";" + str(
+        paymentByOrderId * 1) + ";" + "NEW" + ";" + str(1)
     writePaymentFile(paymentString)
     return None
 
 
 def viewPayment():
     # OPEN FILE AND READ FILE OF PAYMENT
+    payments = openPaymentFile()
     # LIST IT OUT
+    return None
+
+
+def viewPaymentByPaymentId():
+    #OPEN FILE AND READ FILE OF PAYMENT
+    payments = openPaymentFile()
+    # DESIGN UI INTERFACE
+    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
+    print("                   This is Payment List                       ")
+
+    # FIND THE ROW OF DATA USING ORDERID
+    for payment in payments:
+        payment[1] = PaymentByPaymentId
+        PaymentByPaymentId = int(payment[1]) + str(";" + payment[2]) + "\n"
+        print(PaymentByPaymentId)
+    # IF PRESS BACK, THEN BACK TO PARENT MENU
     return None
 
 
