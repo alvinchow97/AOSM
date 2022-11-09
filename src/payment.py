@@ -28,6 +28,10 @@ def viewPayment():
     # OPEN FILE AND READ FILE OF PAYMENT
     payments = openPaymentFile()
     # LIST IT OUT
+    print("                               View Payment                      ")
+    for payment in payments:
+        payments = str(payment[0]) + str("," + payment[1]) + str("," + payment[2]) + str("," + payment[3]) + "\n"
+        print(payments)
     return None
 
 
