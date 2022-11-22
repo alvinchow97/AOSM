@@ -1,2 +1,2 @@
-1;new description;15;44;26
+1;new description;15;44;30
 2;item description;5;2;198
