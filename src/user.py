@@ -1,16 +1,22 @@
-from menu import openUserFile
+from menu import adminMenu, staffMenu, customerMenu
 
-def checkUserRoleAndRedirect(username):
-    userdb = openUserFile()
-    #username is parameter of a function
-    for user in userdb:
-        open("user.txt")
-    if(username == user[0]):
-        if(user[2] == "admin"):
-            adminMenu()
-        elif(user[2] == "staff"):
-            staffMenu()
-        elif(user[2] == "customer"):
-            customerMenu()
 
-# TODO MISC put test function under here
+def checkUserRoleAndRedirect(role):
+    if role == "admin":
+        adminMenu()
+    elif role == "staff":
+        staffMenu()
+    elif role == "customer":
+        customerMenu()
+
+
+def openUserFile():
+    # DO THE OPEN FILE READ FILE ACTION HERE
+    users = []
+    userDb = db = open("db/user.txt", "r")
+    for i in userDb:
+        username, password, role = i.split(";")
+        users.append([username.strip(), password.strip(), role.strip()])
+    # THEN REPLACE THE COMMENT ABOVE
+    # RETURN WHAT INSIDE THE FILE
+    return users

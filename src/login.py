@@ -1,3 +1,6 @@
+from user import checkUserRoleAndRedirect, openUserFile
+from main import home
+import main
 def register():
     db = openUserFile()
     username = input("Create username:")
@@ -26,48 +29,20 @@ def register():
 
 
 def access():
-    db = openUserFile()
+    userDb = openUserFile()
     username = input("Enter username:")
     password = input("Enter Password:")
+    print("\n Enter 0 in both field to quit the program.")
 
-    if not len(username or password) < 1:
-        d = []
-        f = []
-        for i in db:
-            a, b, c = i.split(";")
-            b = b.strip()
-            d.append(a)
-            f.append(b)
-        data = dict(zip(d, f))
+    for user in userDb:
+        if (username == str(user[0]) and password == str(user[1])):
+            print("Login success")
+            print("Hi, ", str(user[2]))
+            checkUserRoleAndRedirect(user[2])
+        elif username == str(0) and password == str(0):
+            access()
+        else:
+            return
+            # will import home but circular dependency
 
-        try:
-            if data[username]:
-                try:
-                    if password == data[username]:
-                        print("Login success")
-                        print("Hi, ", username)
-                    else:
-                        print("Invalid username or password")
-                except:
-                    print("Incorrect password or username")
-            else:
-                print("Username doesn't exist")
-        except:
-            print("Login error")
-    else:
-        print("Please enter a value")
 
-def openUserFile():
-    userDb = db = open("db/user.txt", "r")
-    return userDb
-def home(option=None):
-    option = input("Login | Signup:")
-    if option == "Login":
-        access()
-    elif option == "Signup":
-        register()
-    else:
-        print("Invalid option!")
-
-# TODO MISC put test function under here
-register()

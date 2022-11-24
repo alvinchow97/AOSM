@@ -1,3 +1,13 @@
-def openUserFile():
-    userDb = db = open("db/user.txt", "r")
-    return userDb
+def customerMenu():
+    print("customerMenu");
+    return
+
+
+def adminMenu():
+    print("adminMenu");
+    return
+
+
+def staffMenu():
+    print("staffMenu");
+    return
