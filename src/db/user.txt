@@ -1,3 +1,6 @@
 admin;1;admin
 staff;1;staff
 user;1;customer
+fabian123;fabian1234;admin
+hanbin123;bin1234;staff
+eric123;tang1234;customer

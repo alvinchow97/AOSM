@@ -127,5 +127,6 @@ def openUserFile():
     userDb = db = open("db/user.txt", "r")
     return userDb
 
-#test
-    assignDeliveryStaff()
+
+# TODO MISC, put test function here to try
+viewDelivery()

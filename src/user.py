@@ -1,11 +1,16 @@
-def Register():
-    username = input("Please enter your ID: ")
-    password = input("Please enter your Password: ")
-    userType = input("Please enter User Type:")
-    while True:
-        UserType = input("Please enter user type (admin,staff,customer): ")
-        if (userType =="admin" or userType =="staff" or userType =="customer"):
-            break
-    with open("user.txt","a") as fh:
-        rec = username+","+password+","+customer+"\n"
-        fh.write(rec)
+from menu import openUserFile
+
+def checkUserRoleAndRedirect(username):
+    userdb = openUserFile()
+    #username is parameter of a function
+    for user in userdb:
+        open("user.txt")
+    if(username == user[0]):
+        if(user[2] == "admin"):
+            adminMenu()
+        elif(user[2] == "staff"):
+            staffMenu()
+        elif(user[2] == "customer"):
+            customerMenu()
+
+# TODO MISC put test function under here

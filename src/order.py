@@ -128,4 +128,4 @@ def writeOrderFileByReplace(writeOrder, writeMode):
     writeFileDb.write(writeString)
 
 # TODO MISC put test function under here
-createOrder([])
+viewOrder()
