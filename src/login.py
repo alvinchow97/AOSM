@@ -70,3 +70,4 @@ def home(option=None):
         print("Invalid option!")
 
 # TODO MISC put test function under here
+register()

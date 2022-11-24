@@ -95,3 +95,5 @@ def writePaymentFileByReplace(writePayment, writeMode):
     writeFileDb.write(writeString)
 
 
+# TODO MISC put test function under here
+viewPayment()
