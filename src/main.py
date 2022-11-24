@@ -32,6 +32,7 @@ from user import home
 with open("database.txt", "a"):
     db.write(username + ", " + password + "\n")
     print("Successfully register!")
+    #HanBin messed
 
     return login
         #after sign up, back to login at above (no need validation)
