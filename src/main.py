@@ -1,14 +1,40 @@
 from login import home
+from menu import home
 
+#login is file
+#home is function
 def home():
     # STEP 1
     # Let the user to key in 1/2 for Login or Sign Up
-        #If login, let the user to key in username/password
-            #username wrong, prompt Wrong (new display function in display.py), go back key in username
-            #password wrong, let the user to key in up to 3 times, if not go back to key in username/password
-            #if correct, go to STEP 2
+    option = input("Please input 1 to login, input 2 to sign up.")
+    if (option == "1"):
+        access()
+    elif (option == 2):
+        register()
+    else:
+        print("Invalid option")
+
+#If login, let the user to key in username/password
+    result = access()
+    db = openUserFile()
+    username = input("Enter username:")
+    password = input("Enter Password:")
+    for user in userDb:
+        if(username == user[0] and password == user[1]):
+            if (username != user[0]):
+                print("Wrong username")
+        return home
+    #username wrong, prompt Wrong (new display function in display.py), go back key in username
+        #password wrong, let the user to key in up to 3 times, if not go back to key in username/password
+        #if correct, go to STEP 2
         #If sign up, let the user to key in username/password
-            #after sign up, back to login at above (no need validation)
+from user import home
+with open("database.txt", "a"):
+    db.write(username + ", " + password + "\n")
+    print("Successfully register!")
+
+    return login
+        #after sign up, back to login at above (no need validation)
 
     #STEP 2
     # Check the user is what role, go to different page.
@@ -85,3 +111,6 @@ def optionMenu():
     # In progress
 if __name__ == "__main__":
     home()
+
+#test
+home()
