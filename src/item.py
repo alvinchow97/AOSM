@@ -312,4 +312,4 @@ def writeCategoryFile(writeCategory,writeMode):
     return None
 
 # TODO MISC, put test function here to try
-writeCategoryFile(1)
+deleteCategory(categoryid)

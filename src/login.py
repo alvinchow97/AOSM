@@ -69,3 +69,4 @@ def home(option=None):
     else:
         print("Invalid option!")
 
+# TODO MISC put test function under here
