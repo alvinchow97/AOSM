@@ -20,24 +20,25 @@ def createItem(item):
     # WRITE INTO THE FILE
     return None
 
-
 def createCategory(category):
-    categoryDb = openCategoryFile()
+    categoryDb = openCategoryFile(category)
     highestId = 0
-    categoryString = ""
     for i in categoryDb:
-        Categoryname = input("Enter a category name: ")
-        print("successfully added new category")
         if (int(i[0]) >= highestId):
             highestId = (int(i[0]) + 1)
 
-    categoryString = str(highestId) + ";" + ""
+    highestId = highestId + 1
+    categoryString =  + str(highestId) + ""
     writeCategoryFile(categoryString)
     # GET THE LATEST CATEGORY ID
     # ON TOP OF THE LATEST CATEGORY ID, +1
     # WRITE INTO THE FILE
-
     return None
+
+
+    Categoryname = input("Enter a category name: ")
+    print("successfully added a new category")
+createCategory(category)
 
 def viewItem():
     # IN THIS CASE, WE VIEW THE FILE BY ALL, IF NEEDED TO SPECIFIC, CREATE ANOTHER FUNCTION
@@ -263,6 +264,7 @@ def openCategoryFile():
         categories.append([categoryId, categoryName])
     # THEN REPLACE THE COMMENT ABOVE
     # RETURN WHAT INSIDE THE FILE
+
     return categories
 
 
