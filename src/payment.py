@@ -96,4 +96,3 @@ def writePaymentFileByReplace(writePayment, writeMode):
 
 
 # TODO MISC put test function under here
-viewPayment()
