@@ -41,7 +41,9 @@ def createCategory(category):
     # ON TOP OF THE LATEST CATEGORY ID, +1
     # WRITE INTO THE FILE
 
-
+Categoryname = input("Enter a category name: ")
+print("successfully added a new category")
+createCategory()
 
 def viewItem():
     # IN THIS CASE, WE VIEW THE FILE BY ALL, IF NEEDED TO SPECIFIC, CREATE ANOTHER FUNCTION
@@ -62,6 +64,24 @@ def viewItem():
     #HanBin changes
     return None
 
+def viewCategory():
+    # IN THIS CASE, WE VIEW THE FILE BY ALL, IF NEEDED TO SPECIFIC, CREATE ANOTHER FUNCTION
+    # OPEN FILE, READ FILE
+    categories = openCategoryFile()
+    # RETURN THE ITEM, REPLACE THE NONE BELOW
+
+    # TODO , do the UI Interface
+    printString = ""
+    # TODO , do the UI Interface
+    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
+    print("                     This is Category                         ")
+    for category in categories:
+        printString += (str(category[0] + " " + category[1]) + "\n")
+    print(printString)
+
+    # Press back, back to menu (refer to the function below)
+    # HanBin changes
+    return None
 
 def viewItemByCategory(categoryId, category):
     # OPEN ITEM FILE, READ FILE
