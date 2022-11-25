@@ -5,8 +5,8 @@ def customerMenu():
 
 def adminMenu():
     print("adminMenu");
-    return
 
+    return
 
 def staffMenu():
     print("staffMenu");

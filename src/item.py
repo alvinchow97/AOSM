@@ -20,28 +20,25 @@ def createItem(item):
     # WRITE INTO THE FILE
     return None
 
-
 def createCategory(category):
-    categoryDb = openCategoryFile()
+    categoryDb = openCategoryFile(category)
     highestId = 0
-    categoryString = ""
     for i in categoryDb:
         if (int(i[0]) >= highestId):
-            highestId = int(i[0]) + 1
+            highestId = (int(i[0]) + 1)
 
-    categoryString = str(highestId) + ";" + "Electronics"
+    highestId = highestId + 1
+    categoryString =  + str(highestId) + ""
     writeCategoryFile(categoryString)
     # GET THE LATEST CATEGORY ID
     # ON TOP OF THE LATEST CATEGORY ID, +1
     # WRITE INTO THE FILE
-
     return None
-    # OPEN FILE, READ FILE
-    # GET THE LATEST CATEGORY ID
-    # ON TOP OF THE LATEST CATEGORY ID, +1
-    # WRITE INTO THE FILE
 
 
+    Categoryname = input("Enter a category name: ")
+    print("successfully added a new category")
+createCategory(category)
 
 def viewItem():
     # IN THIS CASE, WE VIEW THE FILE BY ALL, IF NEEDED TO SPECIFIC, CREATE ANOTHER FUNCTION
@@ -55,13 +52,31 @@ def viewItem():
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     This is Item List                         ")
     for item in items:
-        printString += str(item[0] + " " + item[1]) + "\n"
+         printString += str(item[0] + " " + item[1]) + "\n"
     print(printString)
 
     # Press back, back to menu (refer to the function below)
     #HanBin changes
     return None
 
+def viewCategory():
+    # IN THIS CASE, WE VIEW THE FILE BY ALL, IF NEEDED TO SPECIFIC, CREATE ANOTHER FUNCTION
+    # OPEN FILE, READ FILE
+    categories = openCategoryFile()
+    # RETURN THE ITEM, REPLACE THE NONE BELOW
+
+    # TODO , do the UI Interface
+    printString = ""
+    # TODO , do the UI Interface
+    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
+    print("                     This is Category                         ")
+    for category in categories:
+        printString += (str(category[0] + " " + category[1]) + "\n")
+    print(printString)
+
+    # Press back, back to menu (refer to the function below)
+    # HanBin changes
+    return None
 
 def viewItemByCategory(categoryId, category):
     # OPEN ITEM FILE, READ FILE
@@ -220,7 +235,6 @@ def deleteCategory(categoryId):
     # DELETE CATEGORY
     return None
 
-
 # TODO MISC , OTHER FUNCTION SUPPORT THE TOP PART
 
 
@@ -250,6 +264,7 @@ def openCategoryFile():
         categories.append([categoryId, categoryName])
     # THEN REPLACE THE COMMENT ABOVE
     # RETURN WHAT INSIDE THE FILE
+
     return categories
 
 
@@ -300,12 +315,12 @@ def writeCategoryFile(writeCategory,writeMode):
     count = 0
     for item in writeCategory:
         if (writeMode == 1):
-            writeString += item[0] + ";" + item[1] + ";" + item[2] + ";" + item[3] + ";" + item[4]
+            writeString += item[0] + ";" + item[1]
         elif (writeMode == 2):
             if (count == 0):
-                writeString += item[0] + ";" + item[1] + ";" + item[2] + ";" + item[3] + ";" + item[4] + "\n"
+                writeString += item[0] + ";" + item[1]
             else:
-                writeString += item[0] + ";" + item[1] + ";" + item[2] + ";" + item[3] + ";" + item[4]
+                writeString += item[0] + ";" + item[1]
         count = count + 1
     writeFileDb = open("db/category.txt", "w")
     writeFileDb.write(writeString)

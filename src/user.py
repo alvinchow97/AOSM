@@ -1,6 +1,7 @@
 from menu import adminMenu, staffMenu, customerMenu
 
 
+
 def checkUserRoleAndRedirect(role):
     if role == "admin":
         adminMenu()
@@ -19,4 +20,6 @@ def openUserFile():
         users.append([username.strip(), password.strip(), role.strip()])
     # THEN REPLACE THE COMMENT ABOVE
     # RETURN WHAT INSIDE THE FILE
-    return users
+    return openUserFile()
+
+
