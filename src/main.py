@@ -1,5 +1,9 @@
 from login import access, register
-
+from item import createCategory,createItem,viewItem,viewItemByCategory
+from order import viewOrder,viewOrderByOrderId
+from payment import viewPayment,viewPaymentByPaymentId
+from delivery import assignDeliveryStaff,createDelivery,viewDelivery,deleteDeliveryStaff
+from menu import addCategoryMenu,modifyMenu,viewItemByCategoryMenu
 
 def home():
     option = input("Please input 1 to login, input 2 to sign up.")
@@ -12,6 +16,31 @@ def home():
 
 
 def adminHome():
+    option = input("1. Add Category\n2. Add Item\n3. Modify Item\n4. View record of Items\n5. View record of Item by category\n6.View all record of Customer Orders\n7.View all record of Customer Payment\n8.Search Customer Order\n9.Search Customer Payment\n10. Add/Modify/search/delete Delivery Staff\n11.Assign orders for delivery staff\n12. Exit\nPlease enter your choice: ")
+    switch(option):
+    case 1:
+        addCategoryMenu()
+    case 2:
+        createItem()
+    case 3:
+        modifyMenu()
+    case 4:
+        viewItem()
+    case 5:
+        viewItemByCategoryMenu()
+    case 6:
+        viewOrder()
+    case 7:
+        viewPayment()
+    case 8
+        viewOrderByOrderId()
+    elif (option == 9)
+        viewPaymentByPaymentId()
+    elif (option == 10)
+        viewDelivery()
+    elif (option == 11)
+        createDelivery()
+
     # Han Bin
     # 1. Add admin menu in menu got many action
     # Add Category, Add Item into Category, Modify Item, Display all record, Search specific record, Order Management System
@@ -52,10 +81,12 @@ def addCategoryMenuExample():
     # Show the item detail and available field to modify
     # Key in the value based on the field
     # Call the function, then display done, press any back to admin menu
+
     # Display all record
     # Let the user key in what record ? Category, Item etc
     # Display all the record
     # Press any to go back Admin menu
+
     # Search Specific Record
     # Display all the available category of record, Category, Item etc
     # Let the user key in what type of category he want
