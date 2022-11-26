@@ -1,7 +1,6 @@
 from menu import adminMenu, staffMenu, customerMenu
 
 
-
 def checkUserRoleAndRedirect(role):
     if role == "admin":
         adminMenu()
@@ -22,4 +21,4 @@ def openUserFile():
     # RETURN WHAT INSIDE THE FILE
     return openUserFile()
 
-# TODO MISC put test function under here
+
