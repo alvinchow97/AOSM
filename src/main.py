@@ -1,5 +1,6 @@
 from login import access, register
-from menu import addCategoryMenu, createItemMenu, viewItemByCategoryMenu, modifyItemMenu, viewRecordOfItemMenu, viewCustomerOrderMenu, viewCustomerPayment, viewDeliverySystemMenu
+from menu import addCategoryMenu, createItemMenu, viewItemByCategoryMenu, modifyItemMenu, viewRecordOfItemMenu, \
+    viewCustomerOrderMenu, viewCustomerPayment, viewDeliverySystemMenu
 
 
 def home():
@@ -79,6 +80,14 @@ def optionMenu():
     # prompt Login/Sign Up
     # Prompt password wrong, param (username, password, timeOfTry) - return boolean
     # In progress
+    return
+
+
+def staffMenu():
+    return
+
+
+def customerMenu():
     return
 
 
