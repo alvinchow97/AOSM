@@ -1,6 +1,6 @@
 from login import access, register
 from menu import addCategoryMenu, createItemMenu, viewItemByCategoryMenu, modifyItemMenu, viewRecordOfItemMenu, \
-    viewCustomerOrderMenu, viewCustomerPayment, viewDeliverySystemMenu,placeOrderMenu, makePaymentMenu
+    viewCustomerOrderMenu, viewCustomerPayment, viewDeliverySystemMenu,placeOrderMenu, makePaymentMenu, viewDeliveryOrderMenu, assignDeliveryToMySelfMenu, changeAccountPasswordMenu
 
 
 def home():
@@ -108,24 +108,6 @@ def deliveryHome():
     # Let the user see order in hand, status of progress
     # List out progress option. 1.Not ready, 2. Ready for delivery. 3. Delivering etc
     # Let the user key in, then press any key back to delivery menu
-    return
-
-
-def optionMenu():
-    # Temporary for guided use, DO NOT DELETE
-    # Prompt username wrong
-    # prompt password wrong
-    # prompt Login/Sign Up
-    # Prompt password wrong, param (username, password, timeOfTry) - return boolean
-    # In progress
-    return
-
-
-def staffMenu():
-    return
-
-
-def customerMenu():
     return
 
 
