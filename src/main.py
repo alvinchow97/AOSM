@@ -44,6 +44,8 @@ def customerHome():
     print("2. See All Item")
     print("3. Place an order")
     print("4. Make Payment")
+    print("5. View delivery status")
+    print("6. Create delivery feedback")
     option = input("Input your option:")
     if option == str(1):
         viewItemByCategoryMenu()
@@ -53,6 +55,10 @@ def customerHome():
         placeOrderMenu()
     elif option == str(4):
         makePaymentMenu()
+    elif option == str(5):
+        viewDeliveryStatus()
+    elif option == str(6):
+        createDeliveryFeedbackMenu()
     else:
         cautionInput = input("Invalid option ! Press any key to go back.")
         customerMenu()
@@ -82,6 +88,18 @@ def customerHome():
 
 
 def deliveryHome():
+    print("Welcome to delivery staff menu")
+    print("==============================")
+    print("1. View All Order")
+    print("2. Assign delivery to myself")
+    print("3. Change account password")
+    option = input("Option: ")
+    if option == str(1):
+        viewDeliveryOrderMenu()
+    elif option == str(2):
+        assignDeliveryToMySelfMenu()
+    elif option == str(3):
+        changeAccountPasswordMenu()
     # STEP 1
     # Show all available option
     # View all order (that unassigned delivery staff)

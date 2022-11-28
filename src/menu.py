@@ -158,4 +158,39 @@ def makePaymentMenu():
         paymentAmount = input("Payment Amount:")
     createPayment(orderItem,paymentAmount)
 
+def viewDeliveryOrderMenu():
+    viewOrder()
+    option = input("Please any key back to menu")
+    deliveryHome()
+    return
+
+def assignDeliveryToMySelfMenu():
+    viewOrder() # might be unassigned one
+    orderId = input("Input order no.")
+    assignDeliveryStaff(orderId)
+    fakeAction = input("Assigned successfully ! Press any Key to go back")
+    deliveryHome()
+
+def changeAccountPasswordMenu():
+    viewCurrentPassword()
+    option = input("Do you wish to change password ? 1. Yes, any Key to go back")
+    if(option == str(1)):
+        password = input("Please enter your new password")
+        changePassword(password)
+    else:
+        deliveryHome()
+
+def viewDeliveryStatus():
+    viewCurrentDeliveryByUser()
+    option = input("Please any key back to menu")
+    customerHome()
+
+def createDeliveryFeedbackMenu():
+    print("Create delivery feedback menu")
+    viewCurrentDeliveryByUser()
+    deliveryId = input("Pleas enter the delivery ID that you wish to get feedback:")
+    feedback = input("Please enter you feedback:")
+    createDeliveryFeedback(deliveryId,feedback)
+    fakeAction = input("Feedback successfully ! Press any Key to go back")
+    customerHome()
 

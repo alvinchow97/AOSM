@@ -1,8 +1,4 @@
 from user import openUserFile
-# TODO FOURTH PRIORITY
-
-# TODO FOLLOW THE RULE OF CRUD, CREATE/READ/UPDATE/DELETE
-
 def createDelivery(orderId, user=""):
     orders = openDeliveryFile()
     highestId = 0
@@ -61,7 +57,7 @@ def searchDeliveryStaff():
 
 
 
-def assignDeliveryStaff(deliveryId, userId):
+def assignDeliveryStaff(deliveryId):
     # READ AND OPEN FILE OF DELIVERY
     delivery = openDeliveryFile()
     # READ AND OPEN FILE OF USER

@@ -1,7 +1,3 @@
-# TODO TOP PRIORITY, GET THIS DONE FIRST
-
-
-# TODO CRUD - CREATE/READ/UPDATE/DELETE, do this in sequence
 
 def createItem(itemDescription, itemUnitPrice, itemCategory, itemStockQuantity):
     # OPEN FILE, READ FILE
