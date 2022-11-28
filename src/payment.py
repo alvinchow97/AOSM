@@ -1,6 +1,4 @@
-# TODO THIRD PRIORITY
-# TODO Redefine {orderId,quantity, itemId, itemPrice, orderTotalPrice,status, user} to {orderId,quantity, itemId, orderTotalPrice, user}
-# FOLLOW RULES OF CRUD, CREATE/READ/UPDATE/DELETE
+
 
 def createPayment(orderId, paymentAmount):
     payments = openPaymentFile()
@@ -10,7 +8,6 @@ def createPayment(orderId, paymentAmount):
         if (int(i[0]) > highestId):
             highestId = int(i[0])
     highestId = highestId + 1
-    # TODO payment string below need redefine
     payments = openPaymentFile()
     paymentLocated = []
 
@@ -25,9 +22,7 @@ def createPayment(orderId, paymentAmount):
 
 
 def viewPayment():
-    # OPEN FILE AND READ FILE OF PAYMENT
     payments = openPaymentFile()
-    # LIST IT OUT
     print("                               View Payment                      ")
     for payment in payments:
         payments = str(payment[0]) + str("," + payment[1]) + str("," + payment[2]) + str("," + payment[3]) + "\n"
@@ -36,25 +31,19 @@ def viewPayment():
 
 
 def viewPaymentByPaymentId():
-    #OPEN FILE AND READ FILE OF PAYMENT
     payments = openPaymentFile()
-    # DESIGN UI INTERFACE
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                   This is Payment List                       ")
-
-    # FIND THE ROW OF DATA USING ORDERID
     for payment in payments:
         payment[1] = PaymentByPaymentId
         PaymentByPaymentId = int(payment[1]) + str(";" + payment[2]) + "\n"
         print(PaymentByPaymentId)
-    # IF PRESS BACK, THEN BACK TO PARENT MENU
     return None
 
 
 def deletePayment(paymentId):
     index = 0
     payments = openPaymentFile()
-    # TODO replace the 1 with the orderId later
     for payment in payments:
         if (payment[0] == str(1)):
             payment.pop(index)
@@ -80,7 +69,6 @@ def writePaymentFile(writeFile):
 
 def writePaymentFileByReplace(writePayment, writeMode):
     writeFileDb = open("db/payment.txt", "w")
-    # TODO writeMode = 1/2, 1 no need + \n
     writeString = ""
     count = 0
     for payment in writePayment:
@@ -95,4 +83,4 @@ def writePaymentFileByReplace(writePayment, writeMode):
     writeFileDb.write(writeString)
 
 
-# TODO MISC put test function under here
+# Test

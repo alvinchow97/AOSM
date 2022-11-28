@@ -4,6 +4,8 @@ from menu import addCategoryMenu, createItemMenu, viewItemByCategoryMenu, modify
 
 
 def home():
+    masa_Now = CheckTime()
+    print(masa_Now)
     option = input("Please input 1 to login, input 2 to sign up.")
     if option == "1":
         access()
@@ -113,3 +115,10 @@ def deliveryHome():
 
 if __name__ == "__main__":
     home()
+
+def CheckTime():
+    now = datetime.now()
+    Today = now.strftime("Today is, %d/%m/%Y")
+    print("Date :", To_day)
+    time_Now = now.strftime("%H:%M:%S%p")
+    print("Time :", time_Now)
