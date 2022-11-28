@@ -33,12 +33,13 @@ def createCategory(category):
     # GET THE LATEST CATEGORY ID
     # ON TOP OF THE LATEST CATEGORY ID, +1
     # WRITE INTO THE FILE
-    return None
+
 
 
     Categoryname = input("Enter a category name: ")
     print("successfully added a new category")
-createCategory(category)
+
+    return None
 
 def viewItem():
     # IN THIS CASE, WE VIEW THE FILE BY ALL, IF NEEDED TO SPECIFIC, CREATE ANOTHER FUNCTION
@@ -327,4 +328,3 @@ def writeCategoryFile(writeCategory,writeMode):
     return None
 
 # TODO MISC, put test function here to try
-viewItem()

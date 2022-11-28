@@ -22,4 +22,4 @@ def openUserFile():
     # RETURN WHAT INSIDE THE FILE
     return openUserFile()
 
-
+# TODO MISC put test function under here

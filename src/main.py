@@ -45,6 +45,7 @@ def addCategoryMenuExample():
     # Show available category and Item
     # Let the user key in item and category ID
     # If item ID or category not found, let the user key in again, 0 to quit
+
     # Modify Item
     # Show all item
     # Let the user key in the item want to modify
