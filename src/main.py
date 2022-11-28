@@ -61,7 +61,7 @@ def customerHome():
         createDeliveryFeedbackMenu()
     else:
         cautionInput = input("Invalid option ! Press any key to go back.")
-        customerMenu()
+        customerHome()
 
 
     # STEP 1
