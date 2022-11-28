@@ -98,5 +98,43 @@ def addCategoryMenu():
 
 
 def viewDeliverySystemMenu():
-    # Pending
+    print("Welcome to delivery system menu - only accessible by Admin")
+    print("1. Add delivery staff")
+    print("2. Delete Delivery staff")
+    print("3. View Delivery staff")
+    print("4. Assign order for delivery staff")
+    option =  input("Please input your option:")
+    if option == str(1):
+        addDeliveryStaffMenu()
+    elif option == str(2):
+        deleteDeliveryStaffMenu()
+    elif option == str(3):
+        viewDeliveryStaffMenu()
+    elif option == str(4):
+        assignOrderForDeliveryStaffMenu()
+    return
+
+def addDeliveryStaffMenu():
+    newDeliveryStaff = input("Please enter new delivery staff name:")
+    # pending add delivery staff
+    print("Delivery stuff created successfully. Default login password: 1234")
+    return
+
+def deleteDeliveryStaffMenu():
+    # Pending create
+    viewDeliveryStaff()
+    option = input("Please any key back to menu")
+    adminHome()
+    return
+
+def viewDeliveryStaffMenu():
+    viewDeliveryStaff()
     return;
+
+def assignOrderForDeliveryStaffMenu():
+    viewOrder()
+    orderOption = input("Please select order to assign:")
+    assignOrderWithDeliveryStaff(orderOption)
+    quitOption = input("Assign successfully, please any key to continue")
+    adminHome()
+
