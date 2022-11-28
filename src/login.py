@@ -40,7 +40,7 @@ def access():
             print("Hi, ", str(user[2]))
             checkUserRoleAndRedirect(user[2])
         elif username == str(0) and password == str(0):
-            access()
+            exit()
         else:
             return
             # will import home but circular dependency

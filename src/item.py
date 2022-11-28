@@ -3,7 +3,7 @@
 
 # TODO CRUD - CREATE/READ/UPDATE/DELETE, do this in sequence
 
-def createItem(item):
+def createItem(itemDescription,itemUnitPrice,itemCategory,itemStockQuantity):
     # OPEN FILE, READ FILE
     items = openItemFile()
     highestId = 0
@@ -79,22 +79,14 @@ def viewCategory():
     # HanBin changes
     return None
 
-def viewItemByCategory(categoryId, category):
-    # OPEN ITEM FILE, READ FILE
-    items = openItemFile(item.txt)
-    # OPEN CATEGORY FILE, READ FILE
-    categoryDb = openCategoryFile(category.txt)
-    # DISPLAY WHAT IS THE CATEGORY NAME
-    print(categoryId)
-    # FETCH THE ITEM UNDER THE CATEGORY ID
+def viewItemByCategory(categoryId):
+    itemDb = openItemFile()
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
-    for item in items:
-        item[4] = ItemByCategory
-        ItemByCategory = int(item[4]) + str(";" + item[2]) + "\n"
-        print(ItemByCategory)
-    # RETURN THE VIEW, REPLACE NONE BELOW
-    return viewItem()
-
+    for item in itemDb:
+        if (item[3] == categoryId):
+            categoryString = str(item[1]) + " " + str(item[2]) + " " + str(item[3]) + " " + str(item[4]) + " "
+            print(categoryString)
+    return
 
 def updateItemUnitPrice(itemId, updatedUnitPrice):
     # TODO assume itemId is 1 , and updateUnitPrice is 10

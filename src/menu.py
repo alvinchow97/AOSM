@@ -1,215 +1,102 @@
-from item import createCategory,writeItemFileByReplace,updateItemCategory,updateItemDescription,updateItemUnitPrice,updateItemStockQuantity,viewItemByCategory,writeItemFile,openCategoryFile,openItemFile
-from delivery import assignDeliveryStaff,modifyDeliveryStaff,searchDeliveryStaff,deleteDeliveryStaff
-from order import editOrderByQuantity
-def customerMenu():
-    print("customerMenu");
-    return
+from item import viewCategory, viewItem, createItem, viewItemByCategory, updateItemCategory, updateItemDescription, \
+    updateItemUnitPrice, updateItemStockQuantity, createCategory
+from order import viewOrder
+from main import adminHome
+from payment import viewPayment
 
 
-def adminMenu():
-    print("adminMenu");
-    return
-def createItem(item):
-    items = openItemFile()
-    writeItemFile = open("db/item.txt", "a")
-    n = int(input("Create item: "))
-    for items in range(n):
-        items = int(input("Item Code: " + "," + "Item Description: " + "," + "Item Price: " + "," + "Category: " + "," + "Quantity: " + "\n"))
-    writeItemFile(items)
-    adminMenu()
+def createItemMenu():
+    print("Existing item")
+    viewItem()
+    option = input("Do you wish to add item ? 1. Continue, any Key to back")
+    if option == str(1):
+        itemDescription = input("New Item Description:")
+        itemUnitPrice = input("New Item Unit Price:")
+        viewCategory()
+        # Validation later
+        itemCategory = input("New Item Category:")
+        itemStockQuantity = input("New Item Stock Quantity:")
+        print("\n Create item processing ...")
+        createItem(itemDescription, itemUnitPrice, itemCategory, itemStockQuantity)
+        print("\n Item Created Successfully...")
+        continueInput = input("Press any key to continue")
+        adminHome()
 
-def displayAllRecord():
-    items = ("openItem.txt")
 
-    # RETURN THE ITEM, REPLACE THE NONE BELOW
+def modifyItemMenu():
+    print("Modify Item")
+    viewItem()
+    itemOption = input("Input item desired")
+    print("Wish field do you wish to update ?")
+    print("1. Item Category")
+    print("2. Item Description")
+    print("3. Item Unit Price")
+    print("4. Item Stock Quantity")
+    modifyOption = input("input your selection:")
+    if modifyOption == str(1):
+        newCategory = input("Please enter new category:")
+        updateItemCategory(itemOption, newCategory)
+    elif modifyOption == str(2):
+        newDescription = input("Please enter new description:")
+        updateItemDescription(itemOption, newDescription)
+    elif modifyOption == str(3):
+        newUnitPrice = input("Please enter new unit price:")
+        updateItemUnitPrice(itemOption, newUnitPrice)
+    elif modifyOption == str(4):
+        newStockQuantity = input("Please enter new stock quantity:")
+        updateItemStockQuantity(itemOption, newStockQuantity)
+    else:
+        print("Invalid option, redirect to home.")
+        adminHome()
 
-    # TODO , do the UI Interface
-    printString = ""
-    # TODO , do the UI Interface
-    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
-    print("                     This is Item List                         ")
-    for item in items:
-        printString += str(item[0] + " " + item[1]) + " " + item[2] + " " + item[3] + " " + item[4] + "\n"
-    print(printString)
-    adminMenu()
+
+def viewRecordOfItemMenu():
+    viewItem()
+    option = input("Please any key to back.")
+    adminHome()
+
+
+def viewItemByCategoryMenu():
+    viewCategory()
+    option = input("Please select your category desired")
+    viewItemByCategory(option)
+    option = input("Please any key to back.")
+    adminHome()
+
+
+def viewCustomerOrderMenu():
+    viewOrder()
+    option = input("Please any key to back.")
+    adminHome()
+    return;
+
+
+def viewCustomerPayment():
+    viewPayment()
+    option = input("Please any key to back.")
+    adminHome()
+    return;
 
 
 def staffMenu():
     print("staffMenu");
     return
 
-def addCategoryMenu():
-    categories = openCategoryFile()
-    highestId = 0
-    categoryString = ""
-    print("The category available currently is")
-    print("category.txt")
-    print("Please insert your option.")
-    CategoryID = input("1. Add Category\n0. Exit")
-    createCategory()
-
-def addItemMenu():
-    items = openItemFile()
-    highestId = 0
-
-    for i in items:
-        if (int(i[0]) > highestId):
-            highestId = int(i[0])
-    highestId = highestId + 1
-    open("item.txt","a")
-    itemDescription = input("Please input item name")
-    itemUnitPrice = input("Please enter price for every unit")
-    itemCategory = input("Please enter item category")
-    stockQuantity = input("Please enter stock quantity")
-    itemString = str(highestId) + ";" + itemDescription + ";" + itemUnitPrice ";" + str(itemCategory) + ";" + stockQuantity
-    writeItemFile(itemString)
-    return adminHome()
-
-def modifyMenu():
-    itemsLocated = []
-    items = openItemFile()
-    searchItemID = input("Enter Item ID to modify item ka~")
-    for item in items:
-        if (searchItemID in itemsLocated[item][0]):
-            highestID = int(item[0])
-    newItemName = input(item[1] + " Please enter new item name: ")
-    newItemPrice = input(item[2] + "Please enter new item price: ")
-    newCategory = input(item[3] + "Please enter new item price: ")
-    newStockQuantity = input(item[4] + "Please enter new item price: ")
-    item[1] = newItemName
-    item[2] = newItemPrice
-    item[3] = newCategory
-    item[4] = newStockQuantity
-
-    else:
-        print("Record Not Found")
-    newItemDetails = (str(highestId) + ";" + newItemName + ";" + newItemPrice ";" + newCategory + ";" + newstockQuantity)
-    writeItemFileByReplace(newItemDetails)
-
-
-
-
-
-def viewItemByCategoryMenu()
-    itemsLocated = []
-    items = openItemFile()
-
-    for item in items:
-        if (searchItemByCategory in itemsLocated[item][2]):
-            highestID = int(item[0])
-    print(items)
-    searchItemByCategory = input("Enter Category ID to search ka~")
-    if (searchItemByCategory == 1):
-    elif(searchItemByCategory == 2):
-    elif(searchItemByCategory == 3):
-    else:
-        ("Wrong Category")
-    viewItemByCategory()
-Return None
-
-def staffManagementMenu()
-    deliveries = openFile()
-    deliveriesLocated = []
-
-    searchCategory = input("Enter Item ID to modify item ka~")
-    for category in categories:
-        if (searchCategory in deliveriesLocated[delivery][0]):
-            highestID = int(item[0])
-    option = input()
-    if (option == "1")
-        assignDeliveryStaff()
-    elif (option == "2")
-        modifyDeliveryStaff()
-    elif (option == "3")
-        searchDeliveryStaff
-    elif (option == "4")
-        deleteDeliveryStaff()
-    return None
-
-
-
-def assignOrderToStaffMenu()
-    AssignOrder = input("1.Assign order to delivery staff")
-    option = input()
-    if (option == "1")
-        editOrderByQuantity()
-    return None
-
-
-
-
-
 
 def addCategoryMenu():
-    categories = openCategoryFile()
-    highestId = 0
-    categoryString = ""
-    print("The category available currently is")
-    print("category.txt")
-    print("Please insert your option.")
-    CategoryID = input("1. Add Category\n0. Exit")
-    createCategory()
-
-def addItemMenu():
-    items = openItemFile()
-    highestId = 0
-
-    for i in items:
-        if (int(i[0]) > highestId):
-            highestId = int(i[0])
-    highestId = highestId + 1
-    open("item.txt","a")
-    itemDescription = input("Please input item name")
-    itemUnitPrice = input("Please enter price for every unit")
-    itemCategory = input("Please enter item category")
-    stockQuantity = input("Please enter stock quantity")
-    itemString = str(highestId) + ";" + itemDescription + ";" + itemUnitPrice ";" + str(itemCategory) + ";" + stockQuantity
-    writeItemFile(itemString)
-    return adminHome()
-
-def modifyMenu():
-    itemsLocated = []
-    items = openItemFile()
-    searchItemID = input("Enter Item ID to modify item ka~")
-    for item in items:
-        if (searchItemID in itemsLocated[item][0]):
-            highestID = int(item[0])
-    newItemName = input(item[1] + " Please enter new item name: ")
-    newItemPrice = input(item[2] + "Please enter new item price: ")
-    newCategory = input(item[3] + "Please enter new item price: ")
-    newStockQuantity = input(item[4] + "Please enter new item price: ")
-    item[1] = newItemName
-    item[2] = newItemPrice
-    item[3] = newCategory
-    item[4] = newStockQuantity
-
+    print("Existing Category")
+    viewCategory()
+    option = input("Do you wish to continue to add category ? 1.Continue, others Key to go back")
+    if (option == str(1)):
+        newCategory = input("Please input new category name")
+        createCategory(newCategory)
+        print("Category added successfully !")
+        option = input("Please any key back to menu")
+        adminHome()
     else:
-        print("Record Not Found")
-    newItemDetails = (str(highestId) + ";" + newItemName + ";" + newItemPrice ";" + newCategory + ";" + newstockQuantity)
-    writeItemFileByReplace(newItemDetails)
+        adminHome()
 
 
-
-
-
-def viewItemByCategoryMenu()
-    itemsLocated = []
-    items = openItemFile()
-
-    for item in items:
-        if (searchItemByCategory in itemsLocated[item][2]):
-            highestID = int(item[0])
-    print(items)
-    searchItemByCategory = input("Enter Category ID to search ka~")
-    if (searchItemByCategory == 1):
-    elif(searchItemByCategory == 2):
-    elif(searchItemByCategory == 3):
-    else:
-        ("Wrong Category")
-    viewItemByCategory()
-
-
-
-
-
-
+def viewDeliverySystemMenu():
+    # Pending
+    return;
