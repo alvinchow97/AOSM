@@ -3,7 +3,7 @@ from item import createCategory,createItem,viewItem,viewItemByCategory
 from order import viewOrder,viewOrderByOrderId
 from payment import viewPayment,viewPaymentByPaymentId
 from delivery import assignDeliveryStaff,createDelivery,viewDelivery,deleteDeliveryStaff
-from menu import addCategoryMenu,modifyMenu,viewItemByCategoryMenu
+from menu import addCategoryMenu,modifyMenu,viewItemByCategoryMenu,staffManagementMenu,assignOrderToStaffMenu
 
 def home():
     option = input("Please input 1 to login, input 2 to sign up.")
@@ -32,14 +32,16 @@ def adminHome():
         viewOrder()
     case 7:
         viewPayment()
-    case 8
+    case 8:
         viewOrderByOrderId()
-    elif (option == 9)
+    case 9:
         viewPaymentByPaymentId()
-    elif (option == 10)
-        viewDelivery()
-    elif (option == 11)
-        createDelivery()
+    case 10:
+        staffManagementMenu()
+    case 11:
+        assignOrderToStaffMenu()
+    case 12:
+        exit()
 
     # Han Bin
     # 1. Add admin menu in menu got many action

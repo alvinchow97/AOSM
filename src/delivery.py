@@ -1,3 +1,4 @@
+from user import openUserFile
 # TODO FOURTH PRIORITY
 
 # TODO FOLLOW THE RULE OF CRUD, CREATE/READ/UPDATE/DELETE
@@ -31,10 +32,33 @@ def viewDelivery():
     if (opt == "1"):
         assignDeliveryStaff()
     elif (opt == "2"):
+        modifyDeliveryStaff()
+    elif (opt == "3")
         updateDeliveryStaff()
     elif (opt == "3")
         createDeliveryFeedback()
     return viewDelivery
+
+def searchDeliveryStaff():
+    deliveries = openDeliveryFile()
+    deliveriesLocated = []
+    for delivery in deliveries:
+        deliveries = deliveries.strip().split(",")
+        deliveries.append(deliveries)
+    searchStaff = ("Enter Delivery staff ID to search ka~")
+    #search key is staff id
+    index = -1
+    #this index = -1 prevent infinite loop
+    for delivery in range(len(deliveriesLocated)):
+        if (searchStaff in deliveriesLocated [delivery][0])
+            index = delivery
+            break
+    if index != -1:
+        return [1,deliveriesLocated[index]]
+    #1 means true
+    else:
+        return [0, []]
+
 
 
 def assignDeliveryStaff(deliveryId, userId):
@@ -135,9 +159,32 @@ def writeDeliveryFileByReplace(writeDelivery, writeMode):
         count = count + 1
     writeFileDb.write(writeString)
 
+def modifyDeliveryStaff():
+    staffLocated = []
+    staffs = openUserFile()
+    staffId = input("Enter staff username to modify item ka~")
+    for staff in staffs:
+        if (staffId in staffLocated[user][0]):
+            UserName = int(user[0])
+    newUserName = input(user[0] + " Please enter new user name: ")
+    newPassword = input(user[1] + "Please enter new item price: ")
+    newUserType = input(user[2] + "Please enter new User Type: ")
+    item[0] = newUserName
+    user[1] = newPassword
+    user[2] = newUserType
+    else:
+        print("Record Not Found")
+
+    newStaffDetails = (str(newUserName) + ";" + str(newPassword) ";" + str(newUserType))
+    open("db/user.txt","w") as staffs:
+    for line in staffLocated:
+        staff = ",".join(staff)+"\n"
+        staffs.write(newStaffDetails)
+
 def openUserFile():
     userDb = db = open("db/user.txt", "r")
     return userDb
 
 
 # TODO MISC, put test function here to try
+viewDelivery()
