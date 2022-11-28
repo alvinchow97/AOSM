@@ -2,7 +2,7 @@
 # TODO Redefine {orderId,quantity, itemId, itemPrice, orderTotalPrice,status, user} to {orderId,quantity, itemId, orderTotalPrice, user}
 # FOLLOW RULES OF CRUD, CREATE/READ/UPDATE/DELETE
 
-def createPayment(orderId):
+def createPayment(orderId, paymentAmount):
     payments = openPaymentFile()
     highestId = 0
 

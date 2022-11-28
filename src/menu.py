@@ -1,8 +1,9 @@
 from item import viewCategory, viewItem, createItem, viewItemByCategory, updateItemCategory, updateItemDescription, \
     updateItemUnitPrice, updateItemStockQuantity, createCategory
 from order import viewOrder
-from main import adminHome
-from payment import viewPayment
+from main import adminHome,customerHome
+from payment import viewPayment, createPayment
+from order import createOrder
 
 
 def createItemMenu():
@@ -137,4 +138,24 @@ def assignOrderForDeliveryStaffMenu():
     assignOrderWithDeliveryStaff(orderOption)
     quitOption = input("Assign successfully, please any key to continue")
     adminHome()
+
+def placeOrderMenu():
+    viewItem()
+    select = input("Do you wish to continue to place order ? 1. Yes, or any Key to back")
+    if select == str(1):
+        orderItem = input("Item:")
+        quantity = input("Quantity:")
+        createOrder(orderItem, quantity)
+    else:
+        customerHome()
+    return
+
+def makePaymentMenu():
+    viewOrder()
+    select = input("Do you wish to continue to place order ? 1. Yes, 2. No")
+    if select == str(1):
+        orderItem = input("Order:")
+        paymentAmount = input("Payment Amount:")
+    createPayment(orderItem,paymentAmount)
+
 

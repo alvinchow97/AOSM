@@ -4,7 +4,7 @@
 from item import openItemFile, updateItemStockQuantity, writeItemFileByReplace
 
 
-def createOrder(order):
+def createOrder(itemId, quantity):
     orders = openOrderFile()
     highestId = 0
 

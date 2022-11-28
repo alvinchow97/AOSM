@@ -1,6 +1,6 @@
 from login import access, register
 from menu import addCategoryMenu, createItemMenu, viewItemByCategoryMenu, modifyItemMenu, viewRecordOfItemMenu, \
-    viewCustomerOrderMenu, viewCustomerPayment, viewDeliverySystemMenu
+    viewCustomerOrderMenu, viewCustomerPayment, viewDeliverySystemMenu,placeOrderMenu, makePaymentMenu
 
 
 def home():
@@ -38,6 +38,26 @@ def adminHome():
 
 
 def customerHome():
+    print("Customer Menu")
+    print("=============")
+    print("1. View Item Per Category")
+    print("2. See All Item")
+    print("3. Place an order")
+    print("4. Make Payment")
+    option = input("Input your option:")
+    if option == str(1):
+        viewItemByCategoryMenu()
+    elif option == str(2):
+        viewRecordOfItemMenu()
+    elif option == str(3):
+        placeOrderMenu()
+    elif option == str(4):
+        makePaymentMenu()
+    else:
+        cautionInput = input("Invalid option ! Press any key to go back.")
+        customerMenu()
+
+
     # STEP 1
     # Show all the option available, view item per category, see all item, place an order, make payment
     # View item per category
