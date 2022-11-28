@@ -4,9 +4,9 @@ from menu import addCategoryMenu, createItemMenu, viewItemByCategoryMenu, modify
 
 def home():
     option = input("Please input 1 to login, input 2 to sign up.")
-    if (option == "1"):
+    if option == "1":
         access()
-    elif (option == 2):
+    elif option == 2:
         register()
     else:
         print("Invalid option")
@@ -15,21 +15,21 @@ def home():
 def adminHome():
     option = input(
         "1. Add Category\n2. Add Item\n3. Modify Item\n4. View record of Items\n5. View record of Item by category\n6.View all record of Customer Orders\n7.View all record of Customer Payment\n8.Search Customer Order\n9.Search Customer Payment\n10. Add/Modify/search/delete Delivery Staff\n11.Assign orders for delivery staff\n12. Exit\nPlease enter your choice: ")
-    if (option == str(1)):
+    if option == str(1):
         addCategoryMenu()
-    elif (option == str(2)):
+    elif option == str(2):
         createItemMenu()
-    elif (option == str(3)):
+    elif option == str(3):
         modifyItemMenu()
-    elif (option == str(4)):
+    elif option == str(4):
         viewRecordOfItemMenu()
-    elif (option == str(5)):
+    elif option == str(5):
         viewItemByCategoryMenu()
-    elif (option == str(6)):
+    elif option == str(6):
         viewCustomerOrderMenu()
-    elif (option == str(7)):
+    elif option == str(7):
         viewCustomerPayment()
-    elif (option == str(8)):
+    elif option == str(8):
         viewDeliverySystemMenu()
     else:
         print("Invalid option")
