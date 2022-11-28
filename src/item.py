@@ -328,3 +328,4 @@ def writeCategoryFile(writeCategory,writeMode):
     return None
 
 # TODO MISC, put test function here to try
+viewItem()

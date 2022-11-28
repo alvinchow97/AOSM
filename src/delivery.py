@@ -31,6 +31,8 @@ def viewDelivery():
     if (opt == "1"):
         assignDeliveryStaff()
     elif (opt == "2"):
+        updateDeliveryStaff()
+    elif (opt == "3")
         createDeliveryFeedback()
     return viewDelivery
 
@@ -92,6 +94,16 @@ def createDeliveryFeedback(deliveryId, feedback):
     writeFileDb.write(writeFile)
     return None
 
+def deleteDeliveryStaff():
+    deliveries = open("db/delivery.txt", "r")
+    index = 0
+    # TODO replace the 1 with the orderId later
+    for delivery in deliveries:
+        if (delivery[0] == str(1)):
+            delivery.pop(index)
+        index = index + 1
+    writeDeliveryFileByReplace(deliveries, 1)
+    return deleteDeliveryStaff()
 
 def openDeliveryFile():
     deliveries = []
