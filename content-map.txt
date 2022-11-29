@@ -10,7 +10,7 @@ Item
 {itemId, itemDescription, itemUnitPrice, Category, stockQuantity}
 
 Delivery
-{deliveryId, orderId, paymentId, feedback (single feedback), status}
+{deliveryId, orderId, paymentId, feedback (single feedback), status, userId}
 
 Payment
 {paymentId, orderId (from orderId we can know total), status}

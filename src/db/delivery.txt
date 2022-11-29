@@ -1,4 +1,2 @@
-1;staff name1;5;5;20
-2;staff name2;5;5;20
-3;staff name3;5;5;20
-4;staff name4;5;5;20
+1;staff name1;5;5;20;two
+2;staff name2;5;5;20;two

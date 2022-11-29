@@ -5,6 +5,7 @@ from main import adminHome, customerHome, deliveryHome
 from payment import viewPayment, createPayment, viewPaymentByPaymentId
 from order import createOrder
 import user
+from delivery import viewDelivery,assignDeliveryStaff
 
 
 def createItemMenu():
@@ -126,7 +127,7 @@ def addDeliveryStaffMenu():
     user.createDeliveryStaff(newDeliveryStaff)
     print("Delivery stuff created successfully. Default login password: 1234")
     option = input("Please any key back to menu")
-    adminHome()
+    viewDeliverySystemMenu()
     return
 
 
@@ -136,23 +137,26 @@ def deleteDeliveryStaffMenu():
     user.deleteUser(deleteUserName)
     print("Delivery staff deleted successfully !")
     option = input("Please any key back to menu")
-    adminHome()
+    viewDeliverySystemMenu()
     return
 
 
 def viewDeliveryStaffMenu():
     user.viewDeliveryStaff()
     option = input("Please any key back to menu")
-    adminHome()
+    viewDeliverySystemMenu()
     return;
 
 
 def assignOrderForDeliveryStaffMenu():
-    viewOrder()
+    viewDelivery()
     orderOption = input("Please select order to assign:")
-    assignOrderWithDeliveryStaff(orderOption)
+    user.viewDeliveryStaff()
+    staffOption = input("Please select staff to deliver")
+    assignDeliveryStaff(orderOption,staffOption)
     quitOption = input("Assign successfully, please any key to continue")
     adminHome()
+    return
 
 
 def placeOrderMenu():
