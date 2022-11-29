@@ -68,12 +68,14 @@ def viewOrder():
 def viewOrderByOrderId(orderId):
     orders = openOrderFile()
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
-    print("                   This is Order List                       ")
+    print("                   Search Order Details                       ")
     for order in orders:
-        order[1] = OrderByOrderId
-        OrderByOrderId = int(order[1]) + str(";" + order[2]) + "\n"
-        print(OrderByOrderId)
-    return None
+        if(order[0] == str(orderId)):
+            orderString = order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4] + " " + order[5]
+            print(orderString)
+        else:
+            print("Order ID not available")
+    return
 
 
 def openOrderFile():

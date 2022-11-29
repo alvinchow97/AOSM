@@ -29,7 +29,13 @@ def adminHome():
     elif option == str(7):
         menu.viewCustomerPayment()
     elif option == str(8):
+        menu.searchOrderByOrderIdMenu()
+    elif option == str(9):
+        menu.searchPaymentByPaymentId()
+    elif option == str(10):
         menu.viewDeliverySystemMenu()
+    elif option == str(11):
+        menu.assignOrderForDeliveryStaffMenu()
     else:
         print("Invalid option")
         adminHome()

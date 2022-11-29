@@ -1,8 +1,8 @@
 from item import viewCategory, viewItem, createItem, viewItemByCategory, updateItemCategory, updateItemDescription, \
     updateItemUnitPrice, updateItemStockQuantity, createCategory
-from order import viewOrder
+from order import viewOrder, viewOrderByOrderId
 from main import adminHome,customerHome,deliveryHome
-from payment import viewPayment, createPayment
+from payment import viewPayment, createPayment, viewPaymentByPaymentId
 from order import createOrder
 
 def createItemMenu():
@@ -199,3 +199,15 @@ def viewDeliveryStatusMenu():
 
 def createDeliveryFeedbackMenu():
     return
+
+def searchOrderByOrderIdMenu():
+    orderId = input("Please insert order id:")
+    viewOrderByOrderId(orderId)
+    fakeInput = input("Enter any Key to back.")
+    adminHome()
+
+def searchPaymentByPaymentId():
+    paymentId = input("Please insert payment id:")
+    viewPaymentByPaymentId(paymentId)
+    fakeInput = input("Enter any Key to back.")
+    adminHome()
