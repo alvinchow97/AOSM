@@ -26,7 +26,7 @@ def access():
             print("Login success")
             print("Hi, ", str(user[2]))
             trueFindFlag = True
-            checkUserRoleAndRedirect(user[2])
+            checkUserRoleAndRedirect(user[0],user[2])
         elif username == str(0) and password == str(0):
             exit()
     if not trueFindFlag:

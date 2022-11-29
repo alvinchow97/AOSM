@@ -70,7 +70,7 @@ def updateItemStockQuantity(itemId, stockQuantity):
     items = openItemFile()
     for item in items:
         if (item[0] == str(itemId)):
-            item[4] = str(int(stockQuantity))
+            item[4] = str( int(item[4].strip()) - int(stockQuantity) )
 
     writeItemFileByReplace(items, 2)
     return

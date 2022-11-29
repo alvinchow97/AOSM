@@ -1,7 +1,7 @@
 from item import openItemFile, updateItemStockQuantity, writeItemFileByReplace
 
 
-def createOrder(itemId, quantity):
+def createOrder(itemId, quantity,username):
     orders = openOrderFile()
     highestId = 0
 
@@ -13,16 +13,16 @@ def createOrder(itemId, quantity):
 
     items = openItemFile()
     itemLocated = []
+    unitPriceByItemId = 0
     # TODO replace the 1 with item id later
     for i in items:
-        if (i[0] == str(1)):
-            itemLocated = i
-    unitPriceByItemId = itemLocated[2]
-    orderString = "\n" + str(highestId) + ";" + str(1) + ";" + str(1) + ";" + str(
-        unitPriceByItemId * 1) + ";" + "NEW" + ";" + str(1)
+        if (i[0] == str(itemId)):
+            unitPriceByItemId = i[2]
+    orderString = "\n" + str(highestId) + ";" + str(itemId) + ";" + str(quantity) + ";" + str(
+        int(unitPriceByItemId) * int(quantity)) + ";" + "NEW" + ";" + str(username)
     writeOrderFile(orderString)
-    updateItemStockQuantity(1, 3)
-    return None
+    updateItemStockQuantity(itemId, quantity)
+    return
 
 
 def deleteOrder(orderId):

@@ -1,13 +1,13 @@
 from menu import adminHome, staffMenu, customerHome
 
 
-def checkUserRoleAndRedirect(role):
+def checkUserRoleAndRedirect(username,role):
     if role == "admin":
         adminHome()
     elif role == "staff":
         staffMenu()
     elif role == "customer":
-        customerHome()
+        customerHome(username)
 
 
 def openUserFile():

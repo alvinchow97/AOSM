@@ -41,7 +41,7 @@ def adminHome():
         adminHome()
 
 
-def customerHome():
+def customerHome(user=""):
     print("Customer Menu")
     print("=============")
     print("1. View Item Per Category")
@@ -56,7 +56,7 @@ def customerHome():
     elif option == str(2):
         menu.viewRecordOfItemMenuCustomer("customer")
     elif option == str(3):
-        menu.placeOrderMenu()
+        menu.placeOrderMenu(user)
     elif option == str(4):
         menu.makePaymentMenu()
     elif option == str(5):

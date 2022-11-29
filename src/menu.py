@@ -169,13 +169,13 @@ def assignOrderForDeliveryStaffMenu():
     return
 
 
-def placeOrderMenu():
+def placeOrderMenu(user):
     viewItem()
     select = input("Do you wish to continue to place order ? 1. Yes, or any Key to back")
     if select == str(1):
         orderItem = input("Item:")
         quantity = input("Quantity:")
-        createOrder(orderItem, quantity)
+        createOrder(orderItem, quantity,user)
     else:
         customerHome()
     return
