@@ -60,9 +60,9 @@ def customerHome(user=""):
     elif option == str(4):
         menu.makePaymentMenu(user)
     elif option == str(5):
-        menu.viewDeliveryStatusMenu()
+        menu.viewDeliveryStatusMenu(user)
     elif option == str(6):
-        menu.createDeliveryFeedbackMenu()
+        menu.createDeliveryFeedbackMenu(user)
     else:
         cautionInput = input("Invalid option ! Press any key to go back.")
         customerHome()

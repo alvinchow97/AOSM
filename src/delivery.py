@@ -1,24 +1,39 @@
-
-def createDelivery(orderId,paymentId,user):
+def createDelivery(orderId, paymentId, user):
     deliveries = openDeliveryFile()
     highestId = 0
     for i in deliveries:
         if (int(i[0]) > highestId):
             highestId = int(i[0])
     highestId = highestId + 1
-    deliveryString = "\n" + str(highestId) + ";" + str(orderId) + ";" + str(paymentId) + ";" + "" + ";" + str(user)
+    deliveryString = "\n" + str(highestId) + ";" + str(orderId) + ";" + str(
+        paymentId) + ";" + "" + ";" + "NEW" + ";" + str(user)
     writeDeliveryFile(deliveryString)
     return
 
 
 def viewDelivery():
     deliveries = openDeliveryFile()
+    deliveryString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     View Delivery                          ")
     for delivery in deliveries:
-        deliveries = str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str("," + delivery[3]) + str(
+        deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str("," + delivery[3]) + str(
             "," + delivery[4]) + str("," + delivery[5]) + "\n"
-        print(deliveries)
+        print(deliveryString)
+    return
+
+
+def viewDeliveryByUser(user):
+    deliveries = openDeliveryFile()
+    deliveryString = ""
+    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
+    print("                     View Delivery                          ")
+    for delivery in deliveries:
+        if (delivery[5] == user):
+            deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(
+                "," + delivery[3]) + str(
+                "," + delivery[4]) + str("," + delivery[5]) + "\n"
+    print(deliveryString)
     return
 
 
@@ -36,23 +51,12 @@ def assignDeliveryStaff(deliveryId, staffName):
 
 
 def createDeliveryFeedback(deliveryId, feedback):
-    # READ AND OPEN FILE OF DELIVERY
-    deliveries = open("db/delivery.txt", "r")
-    # FIND THE ROW OF DELIVERY INFO BASED ON THE DELIVERYID
-    printString = ""
-    count = 0
-    for delivery in deliveryId:
-        ind = input("Use Delivery ID to search.")
-    if ind == delivery[0]:
-        printString = (
-                    str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str("," + delivery[3]) + str(
-                "," + delivery[4]) + "\n")
-    print(printString)
-    # WRITE INTO THE FILE AND SAVE THE FILE
-    writeFileDb = open("db/delivery.txt", "a")
-    newfeedback = input(delivery[3] + "Please give a feedback, 1 - 5")
-    writeFileDb.write(printString)
-    return None
+    deliveries = openDeliveryFile()
+    for delivery in deliveries:
+        if(delivery[0] == deliveryId):
+            delivery[3] = feedback
+    writeDeliveryFileByReplace(deliveries,1)
+    return
 
 
 def deleteDeliveryStaff():
@@ -99,7 +103,7 @@ def writeDeliveryFileByReplace(writeDelivery, writeMode):
                     4] + ";" + payment[5]
         count = count + 1
     writeFileDb.write(writeString)
-
+    writeFileDb.close()
 
 def modifyDeliveryStaff():
     return

@@ -5,7 +5,7 @@ from main import adminHome, customerHome, deliveryHome
 from payment import viewPayment, createPayment, viewPaymentByPaymentId
 from order import createOrder
 import user
-from delivery import viewDelivery,assignDeliveryStaff
+from delivery import viewDelivery,assignDeliveryStaff,viewDeliveryByUser,createDeliveryFeedback
 
 
 def createItemMenu():
@@ -231,14 +231,24 @@ def createDeliveryFeedbackMenu():
     createDeliveryFeedback(deliveryId, feedback)
     fakeAction = input("Feedback successfully ! Press any Key to go back")
     customerHome()
-
-
-def viewDeliveryStatusMenu():
-
     return
 
 
-def createDeliveryFeedbackMenu():
+def viewDeliveryStatusMenu(user):
+    viewDeliveryByUser(user)
+    fakeAction = input("Press any Key to go back")
+    customerHome()
+    return
+
+
+def createDeliveryFeedbackMenu(user):
+    viewDeliveryByUser(user)
+    deliveryId = input("Delivery Id:")
+    feedback = input("Feedback:")
+    createDeliveryFeedback(deliveryId,feedback)
+    print("Feedback successfully, press any Key to go back")
+    fakeAction = input("Press any Key to go back")
+    customerHome()
     return
 
 

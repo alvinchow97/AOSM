@@ -19,10 +19,10 @@ def createPayment(orderId, paymentAmount,user):
         if (int(i[0]) > highestId):
             highestId = int(i[0])
     highestId = highestId + 1
-    paymentString = "\n" + str(highestId) + ";" + str(orderId) + ";" + str(status)
+    paymentString = "\n" + str(highestId) + ";" + str(orderId) + ";" + str(status) + ";" + str(user)
     writePaymentFile(paymentString)
     createDelivery(orderId,highestId,user)
-    fakeAction = input("Feedback successfully ! Press any Key to go back")
+    fakeAction = input("Payment and Delivery created successfully ! Press any Key to go back")
     customerHome()
     return
 
