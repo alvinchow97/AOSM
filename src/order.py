@@ -67,14 +67,16 @@ def viewOrder():
 
 def viewOrderByOrderId(orderId):
     orders = openOrderFile()
+    foundFlag = False
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                   Search Order Details                       ")
     for order in orders:
         if(order[0] == str(orderId)):
             orderString = order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4] + " " + order[5]
             print(orderString)
-        else:
-            print("Order ID not available")
+            foundFlag = True
+    if not foundFlag:
+        print("Order ID not available")
     return
 
 
@@ -90,7 +92,7 @@ def openOrderFile():
 def writeOrderFile(writeFile):
     writeFileDb = open("db/order.txt", "a")
     writeFileDb.write(writeFile)
-    return None
+    return
 
 
 def writeOrderFileByReplace(writeOrder, writeMode):

@@ -13,7 +13,7 @@ def home():
 
 def adminHome():
     option = input(
-        "1. Add Category\n2. Add Item\n3. Modify Item\n4. View record of Items\n5. View record of Item by category\n6.View all record of Customer Orders\n7.View all record of Customer Payment\n8.Search Customer Order\n9.Search Customer Payment\n10. Add/Modify/search/delete Delivery Staff\n11.Assign orders for delivery staff\n12. Exit\nPlease enter your choice: ")
+        "1. Add Category\n2. Add Item\n3. Modify Item\n4. View record of Items\n5. View record of Item by category\n6.View all record of Customer Orders\n7.View all record of Customer Payment\n8.Search Customer Order\n9.Search Customer Payment\n10. Add/Modify/search/delete Delivery Staff\n11. Exit\nPlease enter your choice: ")
     if option == str(1):
         menu.addCategoryMenu()
     elif option == str(2):
@@ -35,9 +35,9 @@ def adminHome():
     elif option == str(10):
         menu.viewDeliverySystemMenu()
     elif option == str(11):
-        menu.assignOrderForDeliveryStaffMenu()
+        exit()
     else:
-        print("Invalid option")
+        print("Invalid option... returning to menu again")
         adminHome()
 
 

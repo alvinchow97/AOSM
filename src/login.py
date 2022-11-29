@@ -1,30 +1,18 @@
-from user import checkUserRoleAndRedirect, openUserFile
+from user import checkUserRoleAndRedirect, openUserFile, createUser
 
 def register():
-    db = openUserFile()
+    userDb = openUserFile()
     username = input("Create username:")
     password = input("Create Password:")
     password1 = input("Confirm Password:")
-    d = []
-    f = []
-    for i in db:
-        a, b, c = i.split(";")
-        b = b.strip()
-        d.append(a)
-        f.append(b)
-    data = dict(zip(d, f))
-
     if password != password1:
-        print("Password don't match!")
-        register()
-    else:
-        if username in d:
-            print("Username already exist")
-            register()
-        else:
-            db = open("database.txt", "a")
-            db.write(username + ", " + password + "\n")
-            print("Successfully added new user!")
+        return
+    for user in userDb:
+        if(user[1] == username):
+            print("Username exist")
+            return
+    createUser(username,password)
+    return
 
 
 def access():

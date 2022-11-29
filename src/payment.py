@@ -25,7 +25,7 @@ def viewPayment():
     payments = openPaymentFile()
     print("                               View Payment                      ")
     for payment in payments:
-        payments = str(payment[0]) + str("," + payment[1]) + str("," + payment[2]) + str("," + payment[3]) + "\n"
+        payments = str(payment[0]) + str("," + payment[1]) + str("," + payment[2]) + "\n"
         print(payments)
     return None
 
@@ -36,7 +36,7 @@ def viewPaymentByPaymentId(paymentId):
     print("                   Search Payment Details                   ")
     for payment in payments:
         if(payment[0] == str(paymentId)):
-            paymentString = payment[0] + " " + payment[1] + " " + payment[2] + " " + payment[3] + " " + payment[4]
+            paymentString = payment[0] + " " + payment[1] + " " + payment[2]
             print(paymentString)
         else:
             print("Payment ID not available")
@@ -83,6 +83,3 @@ def writePaymentFileByReplace(writePayment, writeMode):
                 writeString += payment[0] + ";" + payment[1] + ";" + payment[2]
         count = count + 1
     writeFileDb.write(writeString)
-
-
-# Test
