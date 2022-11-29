@@ -56,10 +56,12 @@ def editOrderByQuantity(orderId, newQuantity):
 
 def viewOrder():
     orders = openOrderFile()
+    orderString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     View Order                         ")
     for order in orders:
-        print += order[0] + " " + order[1]  + " " + order[2] + " " + order[3] + " " + order[4] + " " + order[5] + "\n"
+        orderString += order[0] + " " + order[1]  + " " + order[2] + " " + order[3] + " " + order[4] + " " + order[5] + "\n" #customer order
+    print(orderString)
     return None
 
 
