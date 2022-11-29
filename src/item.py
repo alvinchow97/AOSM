@@ -1,9 +1,7 @@
 
 def createItem(itemDescription, itemUnitPrice, itemCategory, itemStockQuantity):
-    # OPEN FILE, READ FILE
     items = openItemFile()
     highestId = 0
-
     for i in items:
         if (int(i[0]) > highestId):
             highestId = int(i[0])
@@ -34,7 +32,7 @@ def viewItem():
     for item in items:
         printString += str(item[0] + " " + item[1]) + " " + item[2] + " " + item[3] + " " + item[4] + " " + "\n"
     print(printString)
-    return None
+    return
 
 
 def viewCategory():
@@ -45,7 +43,7 @@ def viewCategory():
     for category in categories:
         printString += (str(category[0] + " " + category[1]) + "\n")
     print(printString)
-    return None
+    return
 
 
 def viewItemByCategory(categoryId):
@@ -129,9 +127,9 @@ def deleteCategory(categoryId):
     itemIndex = 0
     categoryIndex = 0
     for category in categories:
-        if (category[0] == str(1)):
+        if (category[0] == str(categoryId)):
             for item in items:
-                if (item[3] == str(1)):
+                if (item[3] == str(categoryId)):
                     if (len(replacedItems) == len(items)):
                         replacedItems.pop(itemIndex)
                     else:
@@ -145,14 +143,14 @@ def deleteCategory(categoryId):
                 categories.pop(categoryIndex - 1)
         categoryIndex = categoryIndex + 1
     writeCategoryFileByReplace(categories, 1)
-    return None
+    return
 
 
 
 
 def itemMenu():
     # DO ANY MENU ACTION HERE, USING SWITCH CASE
-    return None
+    return
 
 
 def openItemFile():
@@ -176,7 +174,7 @@ def openCategoryFile():
 def writeItemFile(writeFile):
     writeFileDb = open("db/item.txt", "a")
     writeFileDb.write(writeFile)
-    return None
+    return
 
 
 def writeItemFileByReplace(writeItem, writeMode):
@@ -194,6 +192,7 @@ def writeItemFileByReplace(writeItem, writeMode):
         count = count + 1
     writeFileDb = open("db/item.txt", "w")
     writeFileDb.write(writeString)
+    return
 
 
 def writeCategoryFileByReplace(writeCategory, writeMode):
@@ -210,9 +209,10 @@ def writeCategoryFileByReplace(writeCategory, writeMode):
         count = count + 1
     writeFileDb = open("db/category.txt", "w")
     writeFileDb.write(writeString)
+    return
 
 
 def writeCategoryFile(writeCategory):
     writeFileDb = open("db/category.txt", "a")
     writeFileDb.write(writeCategory)
-    return None
+    return
