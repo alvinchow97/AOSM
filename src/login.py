@@ -1,6 +1,5 @@
 from user import checkUserRoleAndRedirect, openUserFile
-from main import home
-import main
+
 def register():
     db = openUserFile()
     username = input("Create username:")
