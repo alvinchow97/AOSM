@@ -13,7 +13,7 @@ Delivery
 {deliveryId, orderId, paymentId, feedback (single feedback), status, userId}
 
 Payment
-{paymentId, orderId (from orderId we can know total), status}
+{paymentId, orderId (from orderId we can know total), status, userId}
 
 #MISC, not module
 

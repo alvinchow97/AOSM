@@ -1,13 +1,12 @@
 
-def createDelivery(orderId, user=""):
-    orders = openDeliveryFile()
+def createDelivery(orderId,paymentId,user):
+    deliveries = openDeliveryFile()
     highestId = 0
-    for i in orders:
+    for i in deliveries:
         if (int(i[0]) > highestId):
             highestId = int(i[0])
     highestId = highestId + 1
-    deliveryString = "\n" + str(highestId) + ";" + "staff name" + str(highestId) + ";" + str(5) + ";" + str(
-        5) + ";" + str(20)
+    deliveryString = "\n" + str(highestId) + ";" + str(orderId) + ";" + str(paymentId) + ";" + "" + ";" + str(user)
     writeDeliveryFile(deliveryString)
     return
 

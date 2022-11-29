@@ -181,14 +181,16 @@ def placeOrderMenu(user):
     return
 
 
-def makePaymentMenu():
+def makePaymentMenu(user):
     viewOrder()
-    select = input("Do you wish to continue to place order ? 1. Yes, 2. No")
+    select = input("Do you wish to continue to make payment ? 1. Yes, 2. No")
     if select == str(1):
         orderItem = input("Order:")
         paymentAmount = input("Payment Amount:")
-    createPayment(orderItem, paymentAmount)
-
+        createPayment(orderItem, paymentAmount,user)
+    else:
+        customerHome()
+    return
 
 def viewDeliveryOrderMenu():
     viewOrder()
@@ -232,6 +234,7 @@ def createDeliveryFeedbackMenu():
 
 
 def viewDeliveryStatusMenu():
+
     return
 
 

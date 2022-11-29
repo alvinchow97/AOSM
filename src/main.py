@@ -58,7 +58,7 @@ def customerHome(user=""):
     elif option == str(3):
         menu.placeOrderMenu(user)
     elif option == str(4):
-        menu.makePaymentMenu()
+        menu.makePaymentMenu(user)
     elif option == str(5):
         menu.viewDeliveryStatusMenu()
     elif option == str(6):
