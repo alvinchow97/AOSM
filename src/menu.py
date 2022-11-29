@@ -60,13 +60,23 @@ def viewRecordOfItemMenu():
     option = input("Please any key to back.")
     adminHome()
 
+def viewRecordOfItemMenuCustomer(role="admin"):
+    viewItem()
+    option = input("Please any key to back.")
+    if(role != "admin"):
+        customerHome()
+    adminHome()
+    return
 
-def viewItemByCategoryMenu():
+def viewItemByCategoryMenu(role="admin"):
     viewCategory()
     option = input("Please select your category desired")
     viewItemByCategory(option)
     option = input("Please any key to back.")
+    if (role != "admin"):
+        customerHome()
     adminHome()
+    return
 
 
 def viewCustomerOrderMenu():

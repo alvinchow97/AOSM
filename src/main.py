@@ -52,9 +52,9 @@ def customerHome():
     print("6. Create delivery feedback")
     option = input("Input your option:")
     if option == str(1):
-        menu.viewItemByCategoryMenu()
+        menu.viewItemByCategoryMenu("customer")
     elif option == str(2):
-        menu.viewRecordOfItemMenu()
+        menu.viewRecordOfItemMenuCustomer("customer")
     elif option == str(3):
         menu.placeOrderMenu()
     elif option == str(4):

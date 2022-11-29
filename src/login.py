@@ -20,15 +20,18 @@ def access():
     username = input("Enter username:")
     password = input("Enter Password:")
     print("\n Enter 0 in both field to quit the program.")
-
+    trueFindFlag = False
     for user in userDb:
         if (username == str(user[0]) and password == str(user[1])):
             print("Login success")
             print("Hi, ", str(user[2]))
+            trueFindFlag = True
             checkUserRoleAndRedirect(user[2])
         elif username == str(0) and password == str(0):
             exit()
-        else:
-            access()
+    if not trueFindFlag:
+        print("Invalid username")
+        access()
+    return
 
 
