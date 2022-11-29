@@ -16,6 +16,6 @@ def openUserFile():
     for i in userDb:
         username, password, role = i.split(";")
         users.append([username.strip(), password.strip(), role.strip()])
-    return openUserFile()
+    return users
 
 

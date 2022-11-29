@@ -9,40 +9,31 @@ def createItem(itemDescription, itemUnitPrice, itemCategory, itemStockQuantity):
             highestId = int(i[0])
 
     highestId = highestId + 1
-    itemString = "\n" + str(highestId) + ";" + "empty item description" + ";" + str(5) + ";" + str(5) + ";" + str(20)
+    itemString = "\n" + str(highestId) + ";" + str(itemDescription) + ";" + str(itemUnitPrice) + ";" + str(itemCategory) + ";" + str(itemStockQuantity)
     writeItemFile(itemString)
     return None
 
 
 def createCategory(category):
-    categoryDb = openCategoryFile(category)
+    categoryDb = openCategoryFile()
     highestId = 0
     for i in categoryDb:
         if (int(i[0]) >= highestId):
-            highestId = (int(i[0]) + 1)
-
+            highestId = int(i[0])
     highestId = highestId + 1
-    categoryString = + str(highestId) + ""
+    categoryString = "\n" +  str(highestId) + ";" + str(category)
     writeCategoryFile(categoryString)
-
-    Categoryname = input("Enter a category name: ")
-    print("successfully added a new category")
-
-    return None
+    return
 
 
 def viewItem():
-
     items = openItemFile()
-
     printString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     This is Item List                         ")
     for item in items:
-        printString += str(item[0] + " " + item[1]) + "\n"
+        printString += str(item[0] + " " + item[1]) + " " + item[2] + " " + item[3] + " " + item[4] + " " + "\n"
     print(printString)
-
-    # HanBin changes
     return None
 
 
@@ -50,11 +41,10 @@ def viewCategory():
     categories = openCategoryFile()
     printString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
-    print("                     This is Category                         ")
+    print("                     Category List                        ")
     for category in categories:
         printString += (str(category[0] + " " + category[1]) + "\n")
     print(printString)
-    # HanBin changes
     return None
 
 
@@ -71,61 +61,50 @@ def viewItemByCategory(categoryId):
 def updateItemUnitPrice(itemId, updatedUnitPrice):
 
     items = openItemFile()
-    itemsLocated = []
     for item in items:
-        if (item[0] == str(1)):
-            item[2] = str(88)  # update itemUnitPrice happen here
+        if (item[0] == str(itemId)):
+            item[2] = str(updatedUnitPrice)  # update itemUnitPrice happen here
     writeItemFileByReplace(items, 1)
-    # FIND THE INDEX WHERE THE ITEM IS LOCATED
-    # UPDATE THE LATEST UNIT PRICE
-
-    # WRITE BACK TO THE FILE
-    # RETURN TRUE IF DONE GOOD, FALSE IF FAILED
-    return None
+    return
 
 
 def updateItemStockQuantity(itemId, stockQuantity):
     items = openItemFile()
-    itemsLocated = []
     for item in items:
-        if (item[0] == str(1)):
-            item[4] = str(int(30))
+        if (item[0] == str(itemId)):
+            item[4] = str(int(stockQuantity))
 
     writeItemFileByReplace(items, 2)
-
-    return None
+    return
 
 
 def updateItemStockQuantityByReduce(itemId, reduceNo):
     items = openItemFile()
-
     for item in items:
-        if (item[0] == str(1)):
-            item[4] = str(int(int(item[4]) - 2))
+        if (item[0] == str(itemId)):
+            item[4] = str(int(int(item[4]) - int(reduceNo)))
 
     writeItemFileByReplace(items, 2)
-    return None
+    return
 
 
 def updateItemCategory(itemId, newCategory):
     items = openItemFile()
     for item in items:
-        if (item[0] == str(1)):
-            item[3] = str(int(5))
-
+        if (item[0] == str(itemId)):
+            item[3] = str(newCategory)
     writeItemFileByReplace(items, 1)
-    return None
+    return
 
 
 def updateItemDescription(itemId, newDescription):
 
     items = openItemFile()
     for item in items:
-        if (item[0] == str(1)):
-            item[1] = str("test new description")  # update stockQuantity happen here (reduce by 2)
-
+        if (item[0] == str(itemId)):
+            item[1] = str(newDescription)  # update stockQuantity happen here (reduce by 2)
     writeItemFileByReplace(items, 1)
-    return None
+    return
 
 
 def deleteItem(itemId):
@@ -137,7 +116,7 @@ def deleteItem(itemId):
             items.pop(index)
         index = index + 1
     writeItemFileByReplace(items, 1)
-    return None
+    return
 
 
 def deleteCategory(categoryId):
@@ -233,22 +212,7 @@ def writeCategoryFileByReplace(writeCategory, writeMode):
     writeFileDb.write(writeString)
 
 
-def writeCategoryFile(writeCategory, writeMode):
-    writeString = ""
-    count = 0
-    for item in writeCategory:
-        if (writeMode == 1):
-            writeString += item[0] + ";" + item[1]
-        elif (writeMode == 2):
-            if (count == 0):
-                writeString += item[0] + ";" + item[1]
-            else:
-                writeString += item[0] + ";" + item[1]
-        count = count + 1
-    writeFileDb = open("db/category.txt", "w")
-    writeFileDb.write(writeString)
+def writeCategoryFile(writeCategory):
+    writeFileDb = open("db/category.txt", "a")
+    writeFileDb.write(writeCategory)
     return None
-
-
-# TODO MISC, put test function here to try
-viewItem()

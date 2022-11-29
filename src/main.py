@@ -1,16 +1,12 @@
-from login import access, register
-from menu import addCategoryMenu, createItemMenu, viewItemByCategoryMenu, modifyItemMenu, viewRecordOfItemMenu, \
-    viewCustomerOrderMenu, viewCustomerPayment, viewDeliverySystemMenu,placeOrderMenu, makePaymentMenu, viewDeliveryOrderMenu, assignDeliveryToMySelfMenu, changeAccountPasswordMenu
-
+import login
+import menu
 
 def home():
-    masa_Now = CheckTime()
-    print(masa_Now)
     option = input("Please input 1 to login, input 2 to sign up.")
     if option == "1":
-        access()
+        login.access()
     elif option == 2:
-        register()
+        login.register()
     else:
         print("Invalid option")
 
@@ -19,21 +15,21 @@ def adminHome():
     option = input(
         "1. Add Category\n2. Add Item\n3. Modify Item\n4. View record of Items\n5. View record of Item by category\n6.View all record of Customer Orders\n7.View all record of Customer Payment\n8.Search Customer Order\n9.Search Customer Payment\n10. Add/Modify/search/delete Delivery Staff\n11.Assign orders for delivery staff\n12. Exit\nPlease enter your choice: ")
     if option == str(1):
-        addCategoryMenu()
+        menu.addCategoryMenu()
     elif option == str(2):
-        createItemMenu()
+        menu.createItemMenu()
     elif option == str(3):
-        modifyItemMenu()
+        menu.modifyItemMenu()
     elif option == str(4):
-        viewRecordOfItemMenu()
+        menu.viewRecordOfItemMenu()
     elif option == str(5):
-        viewItemByCategoryMenu()
+        menu.viewItemByCategoryMenu()
     elif option == str(6):
-        viewCustomerOrderMenu()
+        menu.viewCustomerOrderMenu()
     elif option == str(7):
-        viewCustomerPayment()
+        menu.viewCustomerPayment()
     elif option == str(8):
-        viewDeliverySystemMenu()
+        menu.viewDeliverySystemMenu()
     else:
         print("Invalid option")
         adminHome()
@@ -50,17 +46,17 @@ def customerHome():
     print("6. Create delivery feedback")
     option = input("Input your option:")
     if option == str(1):
-        viewItemByCategoryMenu()
+        menu.viewItemByCategoryMenu()
     elif option == str(2):
-        viewRecordOfItemMenu()
+        menu.viewRecordOfItemMenu()
     elif option == str(3):
-        placeOrderMenu()
+        menu.placeOrderMenu()
     elif option == str(4):
-        makePaymentMenu()
+        menu.makePaymentMenu()
     elif option == str(5):
-        viewDeliveryStatus()
+        menu.viewDeliveryStatusMenu()
     elif option == str(6):
-        createDeliveryFeedbackMenu()
+        menu.createDeliveryFeedbackMenu()
     else:
         cautionInput = input("Invalid option ! Press any key to go back.")
         customerHome()
@@ -97,11 +93,11 @@ def deliveryHome():
     print("3. Change account password")
     option = input("Option: ")
     if option == str(1):
-        viewDeliveryOrderMenu()
+        menu.viewDeliveryOrderMenu()
     elif option == str(2):
-        assignDeliveryToMySelfMenu()
+        menu.assignDeliveryToMySelfMenu()
     elif option == str(3):
-        changeAccountPasswordMenu()
+        menu.changeAccountPasswordMenu()
     # STEP 1
     # Show all available option
     # View all order (that unassigned delivery staff)
@@ -115,10 +111,3 @@ def deliveryHome():
 
 if __name__ == "__main__":
     home()
-
-def CheckTime():
-    now = datetime.now()
-    Today = now.strftime("Today is, %d/%m/%Y")
-    print("Date :", To_day)
-    time_Now = now.strftime("%H:%M:%S%p")
-    print("Time :", time_Now)

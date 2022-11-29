@@ -50,6 +50,7 @@ def modifyItemMenu():
         print("Invalid option, redirect to home.")
         adminHome()
 
+    adminHome()
 
 def viewRecordOfItemMenu():
     viewItem()
@@ -194,3 +195,8 @@ def createDeliveryFeedbackMenu():
     fakeAction = input("Feedback successfully ! Press any Key to go back")
     customerHome()
 
+def viewDeliveryStatusMenu():
+    return
+
+def createDeliveryFeedbackMenu():
+    return
