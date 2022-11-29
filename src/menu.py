@@ -1,9 +1,11 @@
 from item import viewCategory, viewItem, createItem, viewItemByCategory, updateItemCategory, updateItemDescription, \
     updateItemUnitPrice, updateItemStockQuantity, createCategory
 from order import viewOrder, viewOrderByOrderId
-from main import adminHome,customerHome,deliveryHome
+from main import adminHome, customerHome, deliveryHome
 from payment import viewPayment, createPayment, viewPaymentByPaymentId
 from order import createOrder
+import user
+
 
 def createItemMenu():
     print("Existing item")
@@ -50,6 +52,7 @@ def modifyItemMenu():
         adminHome()
 
     adminHome()
+
 
 def viewRecordOfItemMenu():
     viewItem()
@@ -104,7 +107,8 @@ def viewDeliverySystemMenu():
     print("2. Delete Delivery staff")
     print("3. View Delivery staff")
     print("4. Assign order for delivery staff")
-    option =  input("Please input your option:")
+    print("Others key to go back")
+    option = input("Please input your option:")
     if option == str(1):
         addDeliveryStaffMenu()
     elif option == str(2):
@@ -113,24 +117,35 @@ def viewDeliverySystemMenu():
         viewDeliveryStaffMenu()
     elif option == str(4):
         assignOrderForDeliveryStaffMenu()
-    return
+    else:
+        adminHome()
+
 
 def addDeliveryStaffMenu():
     newDeliveryStaff = input("Please enter new delivery staff name:")
-    # pending add delivery staff
+    user.createDeliveryStaff(newDeliveryStaff)
     print("Delivery stuff created successfully. Default login password: 1234")
-    return
-
-def deleteDeliveryStaffMenu():
-    # Pending create
-    viewDeliveryStaff()
     option = input("Please any key back to menu")
     adminHome()
     return
 
+
+def deleteDeliveryStaffMenu():
+    user.viewDeliveryStaff()
+    deleteUserName = input("Please enter the username that want to delete:")
+    user.deleteUser(deleteUserName)
+    print("Delivery staff deleted successfully !")
+    option = input("Please any key back to menu")
+    adminHome()
+    return
+
+
 def viewDeliveryStaffMenu():
-    viewDeliveryStaff()
+    user.viewDeliveryStaff()
+    option = input("Please any key back to menu")
+    adminHome()
     return;
+
 
 def assignOrderForDeliveryStaffMenu():
     viewOrder()
@@ -138,6 +153,7 @@ def assignOrderForDeliveryStaffMenu():
     assignOrderWithDeliveryStaff(orderOption)
     quitOption = input("Assign successfully, please any key to continue")
     adminHome()
+
 
 def placeOrderMenu():
     viewItem()
@@ -150,13 +166,15 @@ def placeOrderMenu():
         customerHome()
     return
 
+
 def makePaymentMenu():
     viewOrder()
     select = input("Do you wish to continue to place order ? 1. Yes, 2. No")
     if select == str(1):
         orderItem = input("Order:")
         paymentAmount = input("Payment Amount:")
-    createPayment(orderItem,paymentAmount)
+    createPayment(orderItem, paymentAmount)
+
 
 def viewDeliveryOrderMenu():
     viewOrder()
@@ -164,47 +182,55 @@ def viewDeliveryOrderMenu():
     deliveryHome()
     return
 
+
 def assignDeliveryToMySelfMenu():
-    viewOrder() # might be unassigned one
+    viewOrder()  # might be unassigned one
     orderId = input("Input order no.")
     assignDeliveryStaff(orderId)
     fakeAction = input("Assigned successfully ! Press any Key to go back")
     deliveryHome()
 
+
 def changeAccountPasswordMenu():
     viewCurrentPassword()
     option = input("Do you wish to change password ? 1. Yes, any Key to go back")
-    if(option == str(1)):
+    if (option == str(1)):
         password = input("Please enter your new password")
         changePassword(password)
     else:
         deliveryHome()
+
 
 def viewDeliveryStatus():
     viewCurrentDeliveryByUser()
     option = input("Please any key back to menu")
     customerHome()
 
+
 def createDeliveryFeedbackMenu():
     print("Create delivery feedback menu")
     viewCurrentDeliveryByUser()
     deliveryId = input("Pleas enter the delivery ID that you wish to get feedback:")
     feedback = input("Please enter you feedback:")
-    createDeliveryFeedback(deliveryId,feedback)
+    createDeliveryFeedback(deliveryId, feedback)
     fakeAction = input("Feedback successfully ! Press any Key to go back")
     customerHome()
+
 
 def viewDeliveryStatusMenu():
     return
 
+
 def createDeliveryFeedbackMenu():
     return
+
 
 def searchOrderByOrderIdMenu():
     orderId = input("Please insert order id:")
     viewOrderByOrderId(orderId)
     fakeInput = input("Enter any Key to back.")
     adminHome()
+
 
 def searchPaymentByPaymentId():
     paymentId = input("Please insert payment id:")
