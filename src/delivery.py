@@ -12,6 +12,7 @@ def createDelivery(orderId, paymentId, user):
 
 
 def viewDelivery():
+    # TODO Decorate
     deliveries = openDeliveryFile()
     deliveryString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
@@ -24,6 +25,7 @@ def viewDelivery():
 
 
 def viewDeliveryByUser(user):
+    # TODO Decorate
     deliveries = openDeliveryFile()
     deliveryString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")

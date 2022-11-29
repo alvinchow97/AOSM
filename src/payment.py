@@ -37,6 +37,7 @@ def viewPayment():
 
 
 def viewPaymentByPaymentId(paymentId):
+    # TODO Decorate
     payments = openPaymentFile()
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                   Search Payment Details                   ")

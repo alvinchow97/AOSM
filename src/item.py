@@ -36,6 +36,7 @@ def viewItem():
 
 
 def viewCategory():
+    # TODO Decorate
     categories = openCategoryFile()
     printString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
@@ -47,6 +48,7 @@ def viewCategory():
 
 
 def viewItemByCategory(categoryId):
+    # TODO Decorate
     itemDb = openItemFile()
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     for item in itemDb:
@@ -57,7 +59,6 @@ def viewItemByCategory(categoryId):
 
 
 def updateItemUnitPrice(itemId, updatedUnitPrice):
-
     items = openItemFile()
     for item in items:
         if (item[0] == str(itemId)):
@@ -71,7 +72,6 @@ def updateItemStockQuantity(itemId, stockQuantity):
     for item in items:
         if (item[0] == str(itemId)):
             item[4] = str( int(item[4].strip()) - int(stockQuantity) )
-
     writeItemFileByReplace(items, 2)
     return
 

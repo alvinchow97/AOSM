@@ -55,6 +55,7 @@ def editOrderByQuantity(orderId, newQuantity):
 
 
 def viewOrder():
+    # TODO Decorate
     orders = openOrderFile()
     orderString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
@@ -66,6 +67,7 @@ def viewOrder():
 
 
 def viewOrderByOrderId(orderId):
+    # TODO Decorate
     orders = openOrderFile()
     foundFlag = False
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
