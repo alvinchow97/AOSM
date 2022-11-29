@@ -183,4 +183,3 @@ def openUserFile():
 
 
 # TODO MISC, put test function here to try
-viewDelivery()

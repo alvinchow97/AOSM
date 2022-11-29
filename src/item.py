@@ -325,4 +325,3 @@ def writeCategoryFile(writeCategory, writeMode):
 
 
 # TODO MISC, put test function here to try
-viewItem()
