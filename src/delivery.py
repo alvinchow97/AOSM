@@ -1,4 +1,5 @@
 from order import deleteOrder
+import os
 def createDelivery(orderId, paymentId, user):
     deliveries = openDeliveryFile()
     highestId = 0
@@ -23,6 +24,7 @@ def viewDelivery():
         deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(
             "," + delivery[3]) + str(
             "," + delivery[4]) + str("," + delivery[5]) + "\n"
+        os.system('cls')
         print(deliveryString)
     return
 

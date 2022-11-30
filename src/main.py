@@ -8,6 +8,7 @@ def home():
     elif option == "2":
         login.register()
     else:
+        os.system('cls')
         print("Invalid option")
         home()
 
@@ -42,6 +43,7 @@ def adminHome():
     elif option == str(12):
         home()
     else:
+        os.system('cls')
         print("Invalid option... returning to menu again")
         adminHome()
 
@@ -73,6 +75,7 @@ def customerHome(user=""):
     elif option == str(7):
         home()
     else:
+        os.system('cls')
         cautionInput = input("Invalid option ! Press any key to go back.")
         customerHome()
     return
@@ -96,6 +99,7 @@ def deliveryHome(username):
     elif option == str(4):
         home()
     else:
+        os.system('cls')
         cautionInput = input("Invalid option ! Press any key to go back.")
         deliveryHome(username)
     return
