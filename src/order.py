@@ -6,7 +6,7 @@ def createOrder(itemId, quantity,username):
     highestId = 0
 
     for i in orders:
-        if (int(i[0]) > highestId):
+        if int(i[0]) > highestId:
             highestId = int(i[0])
 
     highestId = highestId + 1
@@ -16,7 +16,7 @@ def createOrder(itemId, quantity,username):
     unitPriceByItemId = 0
 
     for i in items:
-        if (i[0] == str(itemId)):
+        if i[0] == str(itemId):
             unitPriceByItemId = i[2]
     orderString = "\n" + str(highestId) + ";" + str(itemId) + ";" + str(quantity) + ";" + str(
         int(unitPriceByItemId) * int(quantity)) + ";" + "NEW" + ";" + str(username)
@@ -29,7 +29,7 @@ def deleteOrder(orderId):
     index = 0
     orders = openOrderFile()
     for order in orders:
-        if (order[0] == str(1)):
+        if order[0] == str(1):
             orders.pop(index)
         index = index + 1
     writeOrderFileByReplace(orders, 1)
@@ -40,11 +40,11 @@ def editOrderByQuantity(orderId, newQuantity):
     orders = openOrderFile()
     items = openItemFile()
     for order in orders:
-        if (order[0] == str(1)):
+        if order[0] == str(1):
             for item in items:
-                if (item[0] == order[1]):
+                if item[0] == order[1]:
                     order[3] = str(int(2) * int(item[2]))
-                    if(int(2) > int(order[2])):
+                    if int(2) > int(order[2]):
                         item[4] = str(int(item[4]) + -(int(2) - int(order[2])))
                     else:
                         item[4] = str(int(item[4]) + int(order[2]) - int(4))
@@ -75,7 +75,7 @@ def viewOrderByOrderId(orderId):
     print("                   Search Order Details                       ")
     print(" OrderID| ItemID| Quantity| OrderTotalPrice| Status| User")
     for order in orders:
-        if(order[0] == str(orderId)):
+        if order[0] == str(orderId):
             orderString = str(order[0] + "                    " + order[1] + "                    " + order[
                 2] + "                    " + order[3] + "                    " + order[4] + "                    " +
                               order[5])
@@ -106,10 +106,10 @@ def writeOrderFileByReplace(writeOrder, writeMode):
     writeString = ""
     count = 0
     for order in writeOrder:
-        if (writeMode == 1):
+        if writeMode == 1:
             writeString += order[0] + ";" + order[1] + ";" + order[2] + ";" + order[3] + ";" + order[4] + ";" + order[5]
         elif (writeMode == 2):
-            if (count == 0):
+            if count == 0:
                 writeString += order[0] + ";" + order[1] + ";" + order[2] + ";" + order[3] + ";" + order[4] + ";" + \
                                order[5] + "\n"
             else:

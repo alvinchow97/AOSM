@@ -8,7 +8,7 @@ def register():
     userDb = openUserFile()
     username = input("Create username:")
     for user in userDb:
-        if (user[0] == username):
+        if user[0] == username:
             os.system('cls')
             print("Username exist")
             register()
@@ -32,7 +32,7 @@ def access():
     print("\n Enter 0 in both field to quit the program.")
     trueFindFlag = False
     for user in userDb:
-        if (username == str(user[0]) and password == str(user[1])):
+        if username == str(user[0]) and password == str(user[1]):
             print("Login success")
             print("Hi, ", str(user[2]))
             trueFindFlag = True
