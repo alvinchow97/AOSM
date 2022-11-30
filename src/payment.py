@@ -1,7 +1,7 @@
 from order import openOrderFile
 from main import customerHome
 from delivery import createDelivery
-
+import os
 
 def createPayment(orderId, paymentAmount,user):
     payments = openPaymentFile()
@@ -50,6 +50,7 @@ def viewPaymentByPaymentId(paymentId):
                 2] + "                    " + payment[3])
             print(paymentString)
         else:
+            os.system('cls')
             print("Payment ID not available")
     return
 

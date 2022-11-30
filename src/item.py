@@ -1,4 +1,4 @@
-
+import os
 def createItem(itemDescription, itemUnitPrice, itemCategory, itemStockQuantity):
     items = openItemFile()
     highestId = 0
@@ -32,6 +32,7 @@ def viewItem():
     print(" ItemID| ItemDescription| ItemUnitPrice| Category| StockQuantity")
     for item in items:
         printString +="   " + str(item[0] + "     " + item[1]) + "      " + item[2] + "            " + item[3] + "           " + item[4] + "      " + "\n"
+    os.system('cls')
     print(printString)
     return
 
@@ -44,6 +45,7 @@ def viewCategory():
     print("     Category ID                  Category Name                  ")
     for category in categories:
         printString += "        " + (str(category[0] + "                             " + category[1]) + "\n")
+    os.system('cls')
     print(printString)
     return
 
@@ -55,7 +57,8 @@ def viewItemByCategory(categoryId):
     print("    Item Description        Item Price per unit        Category ID          Stock Quantity       ")
     for item in itemDb:
         if item[3] == categoryId:
-            categoryString = "    " + str(item[1]) + "                      " + str(item[2]) + "" + str(item[3]) + "                   " + str(item[4]) + " "
+            categoryString = "     " + str(item[1]) + "      " + str(item[2]) + "      " + str(item[3]) + "      " + str(item[4]) + "      "
+            os.system('cls')
             print(categoryString)
     return
 

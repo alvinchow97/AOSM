@@ -6,7 +6,7 @@ from payment import viewPayment, createPayment, viewPaymentByPaymentId
 from order import createOrder
 import user
 from delivery import assignDeliveryStaff,viewDeliveryByUser,createDeliveryFeedback, updateDeliveryStatus,viewDeliveryByUnassigned
-
+import os
 
 def createItemMenu():
     print("Existing item")
@@ -24,22 +24,26 @@ def createItemMenu():
         print("\n Item Created Successfully...")
         continueInput = input("Press any key to continue")
         adminHome()
-
+        return
+    else:
+        adminHome()
+        return
 def addItemIntoCategory():
     viewCategory()
     option = input("Do you wish to add item ? 1. Continue, any Key to back")
     if option != str(1):
+        category = input("Category ID:")
+        itemDescription = input("New Item Description:")
+        itemUnitPrice = input("New Item Unit Price:")
+        itemStockQuantity = input("New Item Stock Quantity:")
+        print("\n Create item processing ...")
+        createItem(itemDescription, itemUnitPrice, category, itemStockQuantity)
+        print("\n Item Created Successfully in with Category ID:" + category)
+        continueInput = input("Press any key to continue")
         return
-    category = input("Category ID:")
-    itemDescription = input("New Item Description:")
-    itemUnitPrice = input("New Item Unit Price:")
-    itemStockQuantity = input("New Item Stock Quantity:")
-    print("\n Create item processing ...")
-    createItem(itemDescription, itemUnitPrice, category, itemStockQuantity)
-    print("\n Item Created Successfully in with Category ID:" + category)
-    continueInput = input("Press any key to continue")
-    adminHome()
-    return
+    else:
+        adminHome()
+        return
 
 def modifyItemMenu():
     print("Modify Item")
@@ -79,6 +83,7 @@ def viewRecordOfItemMenuCustomer(role="admin"):
     viewItem()
     option = input("Please any key to back.")
     if role != "admin":
+        os.system('cls')
         customerHome()
     adminHome()
     return
@@ -138,6 +143,7 @@ def viewDeliverySystemMenu():
     elif option == str(4):
         assignOrderForDeliveryStaffMenu()
     else:
+        os.system('cls')
         adminHome()
 
 
