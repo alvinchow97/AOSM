@@ -1,19 +1,26 @@
 from user import checkUserRoleAndRedirect, openUserFile, createUser, writeUserFileByReplace
 
+from main import home
+import os
 
 def register():
     # TODO Decorate
     userDb = openUserFile()
     username = input("Create username:")
+    for user in userDb:
+        if (user[0] == username):
+            os.system('cls')
+            print("Username exist")
+            register()
+            return
     password = input("Create Password:")
     password1 = input("Confirm Password:")
     if password != password1:
         return
-    for user in userDb:
-        if (user[1] == username):
-            print("Username exist")
-            return
     createUser(username, password)
+    os.system('cls')
+    print("User created successfully... Returning to login page")
+    home()
     return
 
 

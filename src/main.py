@@ -1,20 +1,22 @@
 import login
 import menu
-
+import os
 def home():
     option = input("Please input 1 to login, input 2 to sign up.")
     if option == "1":
         login.access()
-    elif option == 2:
+    elif option == "2":
         login.register()
     else:
         print("Invalid option")
+        home()
 
 
 def adminHome():
     # TODO Decorate
     option = input(
         "1. Add Category\n2. Add Item \n3. Add Item to Category\n4. Modify Item\n5. View record of Items\n6. View record of Item by category\n7.View all record of Customer Orders\n8.View all record of Customer Payment\n9.Search Customer Order\n10.Search Customer Payment\n11. Delivery System (Admin)\n12. Back\nPlease enter your choice: ")
+    os.system('cls')
     if option == str(1):
         menu.addCategoryMenu()
     elif option == str(2):
@@ -55,6 +57,7 @@ def customerHome(user=""):
     print("6. Create delivery feedback")
     print("7. Back")
     option = input("Input your option:")
+    os.system('cls')
     if option == str(1):
         menu.viewItemByCategoryMenu("customer")
     elif option == str(2):
@@ -83,6 +86,7 @@ def deliveryHome(username):
     print("3. Change account password")
     print("4. Back")
     option = input("Option: ")
+    os.system('cls')
     if option == str(1):
         menu.viewDeliveryOrderMenu(username)
     elif option == str(2):

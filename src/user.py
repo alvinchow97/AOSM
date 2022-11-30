@@ -19,7 +19,7 @@ def openUserFile():
     return users
 
 def createUser(username, password):
-    userString = str(username) + ";" + str(password) + ";" + "customer"
+    userString = "\n" + str(username) + ";" + str(password) + ";" + "customer"
     writeUserFile(userString)
     return
 

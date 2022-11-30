@@ -5,7 +5,7 @@ from main import adminHome, customerHome, deliveryHome
 from payment import viewPayment, createPayment, viewPaymentByPaymentId
 from order import createOrder
 import user
-from delivery import viewDelivery,assignDeliveryStaff,viewDeliveryByUser,createDeliveryFeedback, updateDeliveryStatus,viewDeliveryByUnassigned
+from delivery import assignDeliveryStaff,viewDeliveryByUser,createDeliveryFeedback, updateDeliveryStatus,viewDeliveryByUnassigned
 
 
 def createItemMenu():

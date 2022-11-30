@@ -3,3 +3,5 @@ user;1;customer
 fabian123;fabian1234;admin
 eric123;tang1234;customer
 two;1234;staff
+Alvin;1;customer
+Ranee;1;customer
