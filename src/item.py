@@ -25,13 +25,13 @@ def createCategory(category):
 
 
 def viewItem():
-    # TODO Decorate
     items = openItemFile()
     printString = ""
-    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
-    print("                     This is Item List                         ")
+    print("                    View Items Records                          ")
+    print("================================================================")
+    print(" ItemID| ItemDescription| ItemUnitPrice| Category| StockQuantity")
     for item in items:
-        printString += str(item[0] + " " + item[1]) + " " + item[2] + " " + item[3] + " " + item[4] + " " + "\n"
+        printString +="   " + str(item[0] + "     " + item[1]) + "      " + item[2] + "            " + item[3] + "           " + item[4] + "      " + "\n"
     print(printString)
     return
 
@@ -40,10 +40,10 @@ def viewCategory():
     # TODO Decorate
     categories = openCategoryFile()
     printString = ""
-    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
-    print("                     Category List                        ")
+    print("================================================================")
+    print("     Category ID                  Category Name                  ")
     for category in categories:
-        printString += (str(category[0] + " " + category[1]) + "\n")
+        printString += "        " + (str(category[0] + "                             " + category[1]) + "\n")
     print(printString)
     return
 
@@ -51,10 +51,10 @@ def viewCategory():
 def viewItemByCategory(categoryId):
     # TODO Decorate
     itemDb = openItemFile()
-    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
+    print("================================================================")
     for item in itemDb:
         if item[3] == categoryId:
-            categoryString = str(item[1]) + " " + str(item[2]) + " " + str(item[3]) + " " + str(item[4]) + " "
+            categoryString = "     " + str(item[1]) + "      " + str(item[2]) + "      " + str(item[3]) + "      " + str(item[4]) + "      "
             print(categoryString)
     return
 

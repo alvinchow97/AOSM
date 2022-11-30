@@ -16,8 +16,9 @@ def viewDelivery():
     # TODO Decorate
     deliveries = openDeliveryFile()
     deliveryString = ""
-    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
-    print("                     View Delivery                          ")
+    print("================================================================")
+    print("                  View Delivery Records                         ")
+    print("deliveryId | orderId | paymentId | feedback  |  status  | userId")
     for delivery in deliveries:
         deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(
             "," + delivery[3]) + str(
@@ -30,8 +31,9 @@ def viewDeliveryByUser(user):
     # TODO Decorate
     deliveries = openDeliveryFile()
     deliveryString = ""
-    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
-    print("                     View Delivery                          ")
+    print("================================================================")
+    print("                  View Delivery Records                         ")
+    print("deliveryId | orderId | paymentId | feedback  |  status  | userId")
     for delivery in deliveries:
         if delivery[5].strip() == user:
             deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(
@@ -139,7 +141,7 @@ def writeDeliveryFileByReplace(writeDelivery, writeMode):
             writeString += payment[0] + ";" + payment[1] + ";" + payment[2] + ";" + payment[3] + ";" + payment[
                 4] + ";" + payment[5]
         elif (writeMode == 2):
-            if count == 0:
+            if (count == 0):
                 writeString += payment[0] + ";" + payment[1] + ";" + payment[2] + ";" + payment[3] + ";" + payment[
                     4] + ";" + payment[5] + "\n"
             else:
@@ -148,7 +150,6 @@ def writeDeliveryFileByReplace(writeDelivery, writeMode):
         count = count + 1
     writeFileDb.write(writeString)
     writeFileDb.close()
-
 
 def modifyDeliveryStaff():
     return
