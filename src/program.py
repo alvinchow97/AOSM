@@ -3,6 +3,7 @@ from datetime import datetime
 
 
 def showCurrentTime():
+    os.system('cls')
     print("Current Time =", datetime.now().strftime("%H:%M:%S"))
 
 # Single File
