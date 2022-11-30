@@ -14,7 +14,7 @@ def createDelivery(orderId, paymentId, user):
 
 def viewDelivery():
     # TODO Decorate
-    deliver11ies = openDeliveryFile()
+    deliveries = openDeliveryFile()
     deliveryString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     View Delivery                          ")
