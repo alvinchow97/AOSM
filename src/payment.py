@@ -28,6 +28,7 @@ def createPayment(orderId, paymentAmount,user):
 
 
 def viewPayment():
+    # TODO Decorate
     payments = openPaymentFile()
     print("                               View Payment                      ")
     for payment in payments:
@@ -37,13 +38,14 @@ def viewPayment():
 
 
 def viewPaymentByPaymentId(paymentId):
-    # TODO Decorate
     payments = openPaymentFile()
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                   Search Payment Details                   ")
+    print(" PaymentId| OrderId| Status| UserId")
     for payment in payments:
         if (payment[0] == str(paymentId)):
-            paymentString = payment[0] + " " + payment[1] + " " + payment[2] + " " + payment[3]
+            paymentString = str(payment[0] + "                    " + payment[1] + "                    " + payment[
+                2] + "                    " + payment[3])
             print(paymentString)
         else:
             print("Payment ID not available")

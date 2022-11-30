@@ -18,7 +18,8 @@ def viewDelivery():
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     View Delivery                          ")
     for delivery in deliveries:
-        deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str("," + delivery[3]) + str(
+        deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(
+            "," + delivery[3]) + str(
             "," + delivery[4]) + str("," + delivery[5]) + "\n"
         print(deliveryString)
     return
@@ -31,11 +32,44 @@ def viewDeliveryByUser(user):
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     View Delivery                          ")
     for delivery in deliveries:
-        if (delivery[5] == user):
+        if (delivery[5].strip() == user):
             deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(
                 "," + delivery[3]) + str(
                 "," + delivery[4]) + str("," + delivery[5]) + "\n"
     print(deliveryString)
+    return
+
+def viewDeliveryByUnassigned():
+    # TODO Decorate
+    deliveries = openDeliveryFile()
+    deliveryString = ""
+    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
+    print("                     View Delivery                          ")
+    for delivery in deliveries:
+        if (delivery[5] == ""):
+            deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(
+                "," + delivery[3]) + str(
+                "," + delivery[4]) + str("," + delivery[5]) + "\n"
+    print(deliveryString)
+    return
+
+
+def updateDeliveryStatus(deliveryId, status):
+    if (status == str(1)):
+        status = "Ongoing"
+    elif status == str(2):
+        status = "Pending"
+    elif status == str(3):
+        status = "Onhold"
+    elif status == str(4):
+        status = "Done"
+    else:
+        status = "NEW"
+    deliveries = openDeliveryFile()
+    for delivery in deliveries:
+        if delivery[0] == deliveryId:
+            delivery[4] = status
+    writeDeliveryFileByReplace(deliveries, 1)
     return
 
 
@@ -55,9 +89,9 @@ def assignDeliveryStaff(deliveryId, staffName):
 def createDeliveryFeedback(deliveryId, feedback):
     deliveries = openDeliveryFile()
     for delivery in deliveries:
-        if(delivery[0] == deliveryId):
+        if (delivery[0] == deliveryId):
             delivery[3] = feedback
-    writeDeliveryFileByReplace(deliveries,1)
+    writeDeliveryFileByReplace(deliveries, 1)
     return
 
 
@@ -106,6 +140,7 @@ def writeDeliveryFileByReplace(writeDelivery, writeMode):
         count = count + 1
     writeFileDb.write(writeString)
     writeFileDb.close()
+
 
 def modifyDeliveryStaff():
     return

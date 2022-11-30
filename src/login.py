@@ -1,4 +1,5 @@
-from user import checkUserRoleAndRedirect, openUserFile, createUser
+from user import checkUserRoleAndRedirect, openUserFile, createUser, writeUserFileByReplace
+
 
 def register():
     userDb = openUserFile()
@@ -8,10 +9,10 @@ def register():
     if password != password1:
         return
     for user in userDb:
-        if(user[1] == username):
+        if (user[1] == username):
             print("Username exist")
             return
-    createUser(username,password)
+    createUser(username, password)
     return
 
 
@@ -26,12 +27,10 @@ def access():
             print("Login success")
             print("Hi, ", str(user[2]))
             trueFindFlag = True
-            checkUserRoleAndRedirect(user[0],user[2])
+            checkUserRoleAndRedirect(user[0], user[2])
         elif username == str(0) and password == str(0):
             exit()
     if not trueFindFlag:
         print("Invalid username")
         access()
     return
-
-

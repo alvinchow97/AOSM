@@ -5,7 +5,7 @@ from main import adminHome, customerHome, deliveryHome
 from payment import viewPayment, createPayment, viewPaymentByPaymentId
 from order import createOrder
 import user
-from delivery import viewDelivery,assignDeliveryStaff,viewDeliveryByUser,createDeliveryFeedback
+from delivery import viewDelivery,assignDeliveryStaff,viewDeliveryByUser,createDeliveryFeedback, updateDeliveryStatus,viewDeliveryByUnassigned
 
 
 def createItemMenu():
@@ -25,6 +25,21 @@ def createItemMenu():
         continueInput = input("Press any key to continue")
         adminHome()
 
+def addItemIntoCategory():
+    viewCategory()
+    option = input("Do you wish to add item ? 1. Continue, any Key to back")
+    if option != str(1):
+        return
+    category = input("Category ID:")
+    itemDescription = input("New Item Description:")
+    itemUnitPrice = input("New Item Unit Price:")
+    itemStockQuantity = input("New Item Stock Quantity:")
+    print("\n Create item processing ...")
+    createItem(itemDescription, itemUnitPrice, category, itemStockQuantity)
+    print("\n Item Created Successfully in with Category ID:" + category)
+    continueInput = input("Press any key to continue")
+    adminHome()
+    return
 
 def modifyItemMenu():
     print("Modify Item")
@@ -92,12 +107,6 @@ def viewCustomerPayment():
     adminHome()
     return;
 
-
-def staffMenu():
-    print("staffMenu");
-    return
-
-
 def addCategoryMenu():
     print("Existing Category")
     viewCategory()
@@ -159,7 +168,7 @@ def viewDeliveryStaffMenu():
 
 
 def assignOrderForDeliveryStaffMenu():
-    viewDelivery()
+    viewDeliveryByUnassigned()
     orderOption = input("Please select order to assign:")
     user.viewDeliveryStaff()
     staffOption = input("Please select staff to deliver")
@@ -169,52 +178,72 @@ def assignOrderForDeliveryStaffMenu():
     return
 
 
-def placeOrderMenu(user):
+def placeOrderMenu(username):
     viewItem()
     select = input("Do you wish to continue to place order ? 1. Yes, or any Key to back")
     if select == str(1):
         orderItem = input("Item:")
         quantity = input("Quantity:")
-        createOrder(orderItem, quantity,user)
+        createOrder(orderItem, quantity,username)
     else:
         customerHome()
     return
 
 
-def makePaymentMenu(user):
+def makePaymentMenu(username):
     viewOrder()
     select = input("Do you wish to continue to make payment ? 1. Yes, 2. No")
     if select == str(1):
         orderItem = input("Order:")
         paymentAmount = input("Payment Amount:")
-        createPayment(orderItem, paymentAmount,user)
+        createPayment(orderItem, paymentAmount,username)
     else:
         customerHome()
     return
 
-def viewDeliveryOrderMenu():
-    viewOrder()
-    option = input("Please any key back to menu")
-    deliveryHome()
+def viewDeliveryOrderMenu(username):
+    viewDeliveryByUser(username)
+    option = input("Do you wish to update the delivery status ? 1. Yes, Any key to go back")
+    if(option != str(1)):
+        deliveryHome(username)
+        return
+    deliveryId = input("Delivery ID:")
+    print(" Status ")
+    print("========")
+    print("1. Ongoing")
+    print("2. Pending")
+    print("3. Onhold")
+    print("4. Done")
+    status = input("Status:")
+    updateDeliveryStatus(deliveryId,status)
+    print("Update delivery status successfully !")
+    option1 = input("Please any key back to menu")
+    deliveryHome(username)
     return
 
 
-def assignDeliveryToMySelfMenu():
-    viewOrder()  # might be unassigned one
-    orderId = input("Input order no.")
-    assignDeliveryStaff(orderId)
+def assignDeliveryToMySelfMenu(username):
+    viewDeliveryByUnassigned()  # might be unassigned one
+    option = input("Do you wish to update the delivery status ? 1. Yes, Any key to go back")
+    if (option != str(1)):
+        deliveryHome(username)
+        return
+    deliveryId = input("Delivery ID:")
+    assignDeliveryStaff(deliveryId,username)
     fakeAction = input("Assigned successfully ! Press any Key to go back")
-    deliveryHome()
+    deliveryHome(username)
 
 
-def changeAccountPasswordMenu():
-    viewCurrentPassword()
+def changeAccountPasswordMenu(username):
+    user.viewCurrentPassword(username)
     option = input("Do you wish to change password ? 1. Yes, any Key to go back")
     if (option == str(1)):
         password = input("Please enter your new password")
-        changePassword(password)
+        user.changePassword(username,password)
+        fakeAction = input("Password changed successfully ! Press any Key to go back")
+        deliveryHome(username)
     else:
-        deliveryHome()
+        deliveryHome(username)
 
 
 def viewDeliveryStatus():
