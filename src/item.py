@@ -25,6 +25,7 @@ def createCategory(category):
 
 
 def viewItem():
+    # TODO Decorate
     items = openItemFile()
     printString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")

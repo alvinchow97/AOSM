@@ -1,3 +1,4 @@
+from order import deleteOrder
 def createDelivery(orderId, paymentId, user):
     deliveries = openDeliveryFile()
     highestId = 0
@@ -46,7 +47,7 @@ def viewDeliveryByUnassigned():
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     View Delivery                          ")
     for delivery in deliveries:
-        if (delivery[5] == ""):
+        if delivery[5] == "":
             deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(
                 "," + delivery[3]) + str(
                 "," + delivery[4]) + str("," + delivery[5]) + "\n"
@@ -55,6 +56,8 @@ def viewDeliveryByUnassigned():
 
 
 def updateDeliveryStatus(deliveryId, status):
+    deleteOrderFlag = False
+    orderIDRelated = 0
     if (status == str(1)):
         status = "Ongoing"
     elif status == str(2):
@@ -63,13 +66,18 @@ def updateDeliveryStatus(deliveryId, status):
         status = "Onhold"
     elif status == str(4):
         status = "Done"
+        deleteOrderFlag = True
     else:
         status = "NEW"
     deliveries = openDeliveryFile()
     for delivery in deliveries:
         if delivery[0] == deliveryId:
             delivery[4] = status
+            orderIDRelated = delivery[1]
     writeDeliveryFileByReplace(deliveries, 1)
+    if deleteOrderFlag:
+        deleteOrder(orderIDRelated)
+        print("Order regarding to Delivery ID" + deliveryId + " is deleted")
     return
 
 

@@ -2,6 +2,7 @@ from user import checkUserRoleAndRedirect, openUserFile, createUser, writeUserFi
 
 
 def register():
+    # TODO Decorate
     userDb = openUserFile()
     username = input("Create username:")
     password = input("Create Password:")
@@ -17,6 +18,7 @@ def register():
 
 
 def access():
+    # TODO Decorate
     userDb = openUserFile()
     username = input("Enter username:")
     password = input("Enter Password:")

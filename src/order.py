@@ -14,7 +14,7 @@ def createOrder(itemId, quantity,username):
     items = openItemFile()
     itemLocated = []
     unitPriceByItemId = 0
-    # TODO replace the 1 with item id later
+
     for i in items:
         if (i[0] == str(itemId)):
             unitPriceByItemId = i[2]
