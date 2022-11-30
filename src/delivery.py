@@ -3,7 +3,7 @@ def createDelivery(orderId, paymentId, user):
     deliveries = openDeliveryFile()
     highestId = 0
     for i in deliveries:
-        if (int(i[0]) > highestId):
+        if int(i[0]) > highestId:
             highestId = int(i[0])
     highestId = highestId + 1
     deliveryString = "\n" + str(highestId) + ";" + str(orderId) + ";" + str(
@@ -14,7 +14,7 @@ def createDelivery(orderId, paymentId, user):
 
 def viewDelivery():
     # TODO Decorate
-    deliveries = openDeliveryFile()
+    deliver11ies = openDeliveryFile()
     deliveryString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     View Delivery                          ")
@@ -33,7 +33,7 @@ def viewDeliveryByUser(user):
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     View Delivery                          ")
     for delivery in deliveries:
-        if (delivery[5].strip() == user):
+        if delivery[5].strip() == user:
             deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(
                 "," + delivery[3]) + str(
                 "," + delivery[4]) + str("," + delivery[5]) + "\n"
@@ -58,7 +58,7 @@ def viewDeliveryByUnassigned():
 def updateDeliveryStatus(deliveryId, status):
     deleteOrderFlag = False
     orderIDRelated = 0
-    if (status == str(1)):
+    if status == str(1):
         status = "Ongoing"
     elif status == str(2):
         status = "Pending"
@@ -88,7 +88,7 @@ def searchDeliveryStaff():
 def assignDeliveryStaff(deliveryId, staffName):
     deliveryDb = openDeliveryFile()
     for delivery in deliveryDb:
-        if (delivery[0] == deliveryId):
+        if delivery[0] == deliveryId:
             delivery[5] = str(staffName)
     writeDeliveryFileByReplace(deliveryDb, 1)
     return
@@ -97,7 +97,7 @@ def assignDeliveryStaff(deliveryId, staffName):
 def createDeliveryFeedback(deliveryId, feedback):
     deliveries = openDeliveryFile()
     for delivery in deliveries:
-        if (delivery[0] == deliveryId):
+        if delivery[0] == deliveryId:
             delivery[3] = feedback
     writeDeliveryFileByReplace(deliveries, 1)
     return
@@ -108,7 +108,7 @@ def deleteDeliveryStaff():
     index = 0
     # TODO replace the 1 with the orderId later
     for delivery in deliveries:
-        if (delivery[0] == str(1)):
+        if delivery[0] == str(1):
             delivery.pop(index)
         index = index + 1
     writeDeliveryFileByReplace(deliveries, 1)
@@ -135,11 +135,11 @@ def writeDeliveryFileByReplace(writeDelivery, writeMode):
     writeString = ""
     count = 0
     for payment in writeDelivery:
-        if (writeMode == 1):
+        if writeMode == 1:
             writeString += payment[0] + ";" + payment[1] + ";" + payment[2] + ";" + payment[3] + ";" + payment[
                 4] + ";" + payment[5]
         elif (writeMode == 2):
-            if (count == 0):
+            if count == 0:
                 writeString += payment[0] + ";" + payment[1] + ";" + payment[2] + ";" + payment[3] + ";" + payment[
                     4] + ";" + payment[5] + "\n"
             else:

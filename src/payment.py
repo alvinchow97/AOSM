@@ -10,13 +10,13 @@ def createPayment(orderId, paymentAmount,user):
     status = "incomplete"
     orderCost = 0
     for order in orders:
-        if (order[0] == str(orderId)):
+        if order[0] == str(orderId):
             orderCost = order[3]
     totalBalance = int(orderCost) - int(paymentAmount)
-    if (totalBalance == 0):
+    if totalBalance == 0:
         status = "completed"
     for i in payments:
-        if (int(i[0]) > highestId):
+        if int(i[0]) > highestId:
             highestId = int(i[0])
     highestId = highestId + 1
     paymentString = "\n" + str(highestId) + ";" + str(orderId) + ";" + str(status) + ";" + str(user)
@@ -43,7 +43,7 @@ def viewPaymentByPaymentId(paymentId):
     print("                   Search Payment Details                   ")
     print(" PaymentId| OrderId| Status| UserId")
     for payment in payments:
-        if (payment[0] == str(paymentId)):
+        if payment[0] == str(paymentId):
             paymentString = str(payment[0] + "                    " + payment[1] + "                    " + payment[
                 2] + "                    " + payment[3])
             print(paymentString)
@@ -56,7 +56,7 @@ def deletePayment(paymentId):
     index = 0
     payments = openPaymentFile()
     for payment in payments:
-        if (payment[0] == str(1)):
+        if payment[0] == str(1):
             payment.pop(index)
         index = index + 1
     writePaymentFileByReplace(payment, 1)
@@ -83,10 +83,10 @@ def writePaymentFileByReplace(writePayment, writeMode):
     writeString = ""
     count = 0
     for payment in writePayment:
-        if (writeMode == 1):
+        if writeMode == 1:
             writeString += payment[0] + ";" + payment[1] + ";" + payment[2] + ";" + payment[3]
         elif (writeMode == 2):
-            if (count == 0):
+            if count == 0:
                 writeString += payment[0] + ";" + payment[1] + ";" + payment[2] + ";" + payment[3] + "\n"
             else:
                 writeString += payment[0] + ";" + payment[1] + ";" + payment[2] + ";" + payment[2]

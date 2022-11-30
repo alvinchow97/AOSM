@@ -78,7 +78,7 @@ def viewRecordOfItemMenu():
 def viewRecordOfItemMenuCustomer(role="admin"):
     viewItem()
     option = input("Please any key to back.")
-    if(role != "admin"):
+    if role != "admin":
         customerHome()
     adminHome()
     return
@@ -88,7 +88,7 @@ def viewItemByCategoryMenu(role="admin"):
     option = input("Please select your category desired")
     viewItemByCategory(option)
     option = input("Please any key to back.")
-    if (role != "admin"):
+    if role != "admin":
         customerHome()
     adminHome()
     return
@@ -111,7 +111,7 @@ def addCategoryMenu():
     print("Existing Category")
     viewCategory()
     option = input("Do you wish to continue to add category ? 1.Continue, others Key to go back")
-    if (option == str(1)):
+    if option == str(1):
         newCategory = input("Please input new category name")
         createCategory(newCategory)
         print("Category added successfully !")
@@ -204,7 +204,7 @@ def makePaymentMenu(username):
 def viewDeliveryOrderMenu(username):
     viewDeliveryByUser(username)
     option = input("Do you wish to update the delivery status ? 1. Yes, Any key to go back")
-    if(option != str(1)):
+    if option != str(1):
         deliveryHome(username)
         return
     deliveryId = input("Delivery ID:")
@@ -225,7 +225,7 @@ def viewDeliveryOrderMenu(username):
 def assignDeliveryToMySelfMenu(username):
     viewDeliveryByUnassigned()  # might be unassigned one
     option = input("Do you wish to update the delivery status ? 1. Yes, Any key to go back")
-    if (option != str(1)):
+    if option != str(1):
         deliveryHome(username)
         return
     deliveryId = input("Delivery ID:")
@@ -237,7 +237,7 @@ def assignDeliveryToMySelfMenu(username):
 def changeAccountPasswordMenu(username):
     user.viewCurrentPassword(username)
     option = input("Do you wish to change password ? 1. Yes, any Key to go back")
-    if (option == str(1)):
+    if option == str(1):
         password = input("Please enter your new password")
         user.changePassword(username,password)
         fakeAction = input("Password changed successfully ! Press any Key to go back")
