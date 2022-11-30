@@ -60,8 +60,9 @@ def viewOrder():
     orderString = ""
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                     View Order                         ")
+    print(" OrderID| ItemID| Quantity| OrderTotalPrice| Status| User")
     for order in orders:
-        orderString += order[0] + " " + order[1]  + " " + order[2] + " " + order[3] + " " + order[4] + " " + order[5] + "\n" #customer order
+        orderString += str(order[0] + "                    " + order[1]  + "                    " + order[2] + "                    " + order[3] + "                    " + order[4] + "                    " + order[5] + "\n") #customer order
     print(orderString)
     return None
 
@@ -72,9 +73,10 @@ def viewOrderByOrderId(orderId):
     foundFlag = False
     print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
     print("                   Search Order Details                       ")
+    print(" OrderID| ItemID| Quantity| OrderTotalPrice| Status| User")
     for order in orders:
         if(order[0] == str(orderId)):
-            orderString = order[0] + " " + order[1] + " " + order[2] + " " + order[3] + " " + order[4] + " " + order[5]
+            orderString = str(order[0] + "                    " + order[1] + "                    " + order[2] + "                    " + order[3] + "                    " + order[4] + "                    " + order[5])
             print(orderString)
             foundFlag = True
     if not foundFlag:
