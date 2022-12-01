@@ -1105,14 +1105,14 @@ def changeAccountPasswordMenu(username):
 
 
 def viewDeliveryStatus():
-    viewCurrentDeliveryByUser()
+    viewDeliveryByUser()
     option = input("Please any key back to menu")
     customerHome()
 
 
 def createDeliveryFeedbackMenu():
     print("Create delivery feedback menu")
-    viewCurrentDeliveryByUser()
+    viewDeliveryByUser()
     deliveryId = input("Pleas enter the delivery ID that you wish to get feedback:")
     feedback = input("Please enter you feedback:")
     createDeliveryFeedback(deliveryId, feedback)
