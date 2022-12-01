@@ -5,3 +5,5 @@ eric123;tang1234;customer
 two;1234;staff
 Alvin;1;customer
 Ranee;1;customer
+Uh;Uh22;customer
+jT;123;customer

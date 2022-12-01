@@ -1,6 +1,7 @@
 import login
 import menu
 import os
+from common import showCurrentTime
 def home():
     option = input("Please input 1 to login, input 2 to sign up.")
     if option == "1":
@@ -13,9 +14,9 @@ def home():
 
 
 def adminHome():
-    # TODO Decorate
+    showCurrentTime()
     option = input(
-        "1. Add Category\n2. Add Item \n3. Add Item to Category\n4. Modify Item\n5. View record of Items\n6. View record of Item by category\n7.View all record of Customer Orders\n8.View all record of Customer Payment\n9.Search Customer Order\n10.Search Customer Payment\n11. Delivery System (Admin)\n12. Back\nPlease enter your choice: ")
+        "1. Add Category\n2. Add Item \n3. Add Item to Category\n4. Modify Item\n5. View record of Items\n6. View record of Item by category\n7. View all record of Customer Orders\n8. View all record of Customer Payment\n9. Search Customer Order\n10. Search Customer Payment\n11. Delivery System (Admin)\n12. Back\nPlease enter your choice: ")
     os.system('cls')
     if option == str(1):
         menu.addCategoryMenu()

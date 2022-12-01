@@ -4,7 +4,7 @@ from main import home
 import os
 
 def register():
-    # TODO Decorate
+
     userDb = openUserFile()
     username = input("Create username:")
     for user in userDb:
@@ -16,6 +16,8 @@ def register():
     password = input("Create Password:")
     password1 = input("Confirm Password:")
     if password != password1:
+        print("Password not match, please try again")
+        register()
         return
     createUser(username, password)
     os.system('cls')
@@ -25,11 +27,11 @@ def register():
 
 
 def access():
-    # TODO Decorate
+
     userDb = openUserFile()
+    print("\nEnter 0 in both field to quit the program.")
     username = input("Enter username:")
     password = input("Enter Password:")
-    print("\n Enter 0 in both field to quit the program.")
     trueFindFlag = False
     for user in userDb:
         if username == str(user[0]) and password == str(user[1]):

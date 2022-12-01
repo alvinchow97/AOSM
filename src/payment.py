@@ -19,7 +19,7 @@ def createPayment(orderId, paymentAmount,user):
         if int(i[0]) > highestId:
             highestId = int(i[0])
     highestId = highestId + 1
-    paymentString = "\n" + str(highestId) + ";" + str(orderId) + ";" + str(status) + ";" + str(user)
+    paymentString = "\n" + str(highestId) + " " + str(orderId) + " " + str(status) + " " + str(user)
     writePaymentFile(paymentString)
     createDelivery(orderId,highestId,user)
     fakeAction = input("Payment and Delivery created successfully ! Press any Key to go back")
@@ -28,11 +28,13 @@ def createPayment(orderId, paymentAmount,user):
 
 
 def viewPayment():
-    # TODO Decorate
+
+    print("                         View Payment                            ")
+    print("=================================================================")
+    print("    PaymentID     Order_ID     Status     Username")
     payments = openPaymentFile()
-    print("                               View Payment                      ")
     for payment in payments:
-        payments = str(payment[0]) + str("," + payment[1]) + str("," + payment[2]) + str("," + payment[3]) + "\n"
+        payments = "    " + str(payment[0]) + "               " + str("," + payment[1]) + "          " + str("," + payment[2]) + "            " + str("," + payment[3]) + "\n"
         print(payments)
     return
 

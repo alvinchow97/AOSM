@@ -13,7 +13,7 @@ def createDelivery(orderId, paymentId, user):
 
 
 def viewDelivery():
-    # TODO Decorate
+
     deliveries = openDeliveryFile()
     deliveryString = ""
     print("================================================================")
@@ -28,7 +28,7 @@ def viewDelivery():
 
 
 def viewDeliveryByUser(user):
-    # TODO Decorate
+
     deliveries = openDeliveryFile()
     deliveryString = ""
     print("================================================================")
@@ -43,11 +43,11 @@ def viewDeliveryByUser(user):
     return
 
 def viewDeliveryByUnassigned():
-    # TODO Decorate
     deliveries = openDeliveryFile()
     deliveryString = ""
-    print("""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""")
-    print("                     View Delivery                          ")
+    print("================================================================")
+    print("                  View Delivery Records                         ")
+    print("deliveryId | orderId | paymentId | feedback  |  status  | userId")
     for delivery in deliveries:
         if delivery[5] == "":
             deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(

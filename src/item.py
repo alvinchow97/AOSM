@@ -37,7 +37,7 @@ def viewItem():
 
 
 def viewCategory():
-    # TODO Decorate
+
     categories = openCategoryFile()
     printString = ""
     print("================================================================")
@@ -49,12 +49,13 @@ def viewCategory():
 
 
 def viewItemByCategory(categoryId):
-    # TODO Decorate
+
     itemDb = openItemFile()
     print("================================================================")
+    print("    Item Description        Item Price per unit        Category ID          Stock Quantity       ")
     for item in itemDb:
         if item[3] == categoryId:
-            categoryString = "     " + str(item[1]) + "      " + str(item[2]) + "      " + str(item[3]) + "      " + str(item[4]) + "      "
+            categoryString = "    " + str(item[1]) + "                      " + str(item[2]) + "" + str(item[3]) + "                   " + str(item[4]) + " "
             print(categoryString)
     return
 
