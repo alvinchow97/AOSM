@@ -52,7 +52,7 @@ def viewDeliveryByUnassigned():
         if delivery[5] == "":
             deliveryString += str(delivery[0]) + str("," + delivery[1]) + str("," + delivery[2]) + str(
                 "," + delivery[3]) + str(
-                "," + delivery[4]) + str("," + delivery[5]) + "\n"
+                "," + delivery[4]) + str("," + delivery[5]) +  "\n"
     print(deliveryString)
     return
 
