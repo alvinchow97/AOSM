@@ -48,6 +48,7 @@ def adminHome():
 
 
 def customerHome(user=""):
+    showCurrentTime()
     print("Customer Menu")
     print("=============")
     print("1. View Item Per Category")
@@ -80,6 +81,7 @@ def customerHome(user=""):
 
 
 def deliveryHome(username):
+    showCurrentTime()
     print("Welcome to delivery staff menu")
     print("==============================")
     print("1. View/Update My Delivery")
