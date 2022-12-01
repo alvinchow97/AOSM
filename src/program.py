@@ -6,6 +6,7 @@ def showCurrentTime():
     os.system('cls')
     print("Current Time =", datetime.now().strftime("%H:%M:%S"))
 
+
 # Single File
 
 # Context of item.py
@@ -18,7 +19,8 @@ def createItem(itemDescription, itemUnitPrice, itemCategory, itemStockQuantity):
             highestId = int(i[0])
 
     highestId = highestId + 1
-    itemString = "\n" + str(highestId) + ";" + str(itemDescription) + ";" + str(itemUnitPrice) + ";" + str(itemCategory) + ";" + str(itemStockQuantity)
+    itemString = "\n" + str(highestId) + ";" + str(itemDescription) + ";" + str(itemUnitPrice) + ";" + str(
+        itemCategory) + ";" + str(itemStockQuantity)
     writeItemFile(itemString)
     return None
 
@@ -30,7 +32,7 @@ def createCategory(category):
         if int(i[0]) >= highestId:
             highestId = int(i[0])
     highestId = highestId + 1
-    categoryString = "\n" +  str(highestId) + ";" + str(category)
+    categoryString = "\n" + str(highestId) + ";" + str(category)
     writeCategoryFile(categoryString)
     return
 
@@ -42,7 +44,8 @@ def viewItem():
     print("================================================================")
     print(" ItemID| ItemDescription| ItemUnitPrice| Category| StockQuantity")
     for item in items:
-        printString +="   " + str(item[0] + "     " + item[1]) + "      " + item[2] + "            " + item[3] + "           " + item[4] + "      " + "\n"
+        printString += "   " + str(item[0] + "     " + item[1]) + "      " + item[2] + "            " + item[
+            3] + "           " + item[4] + "      " + "\n"
     os.system('cls')
     print(printString)
     return
@@ -67,7 +70,8 @@ def viewItemByCategory(categoryId):
     print("================================================================")
     for item in itemDb:
         if item[3] == categoryId:
-            categoryString = "     " + str(item[1]) + "      " + str(item[2]) + "      " + str(item[3]) + "      " + str(item[4]) + "      "
+            categoryString = "     " + str(item[1]) + "      " + str(item[2]) + "      " + str(
+                item[3]) + "      " + str(item[4]) + "      "
             os.system('cls')
             print(categoryString)
     return
@@ -86,7 +90,7 @@ def updateItemStockQuantity(itemId, stockQuantity):
     items = openItemFile()
     for item in items:
         if item[0] == str(itemId):
-            item[4] = str( int(item[4].strip()) - int(stockQuantity) )
+            item[4] = str(int(item[4].strip()) - int(stockQuantity))
     writeItemFileByReplace(items, 2)
     return
 
@@ -111,7 +115,6 @@ def updateItemCategory(itemId, newCategory):
 
 
 def updateItemDescription(itemId, newDescription):
-
     items = openItemFile()
     for item in items:
         if item[0] == str(itemId):
@@ -159,8 +162,6 @@ def deleteCategory(categoryId):
         categoryIndex = categoryIndex + 1
     writeCategoryFileByReplace(categories, 1)
     return
-
-
 
 
 def itemMenu():
@@ -232,6 +233,7 @@ def writeCategoryFile(writeCategory):
     writeFileDb.write(writeCategory)
     return
 
+
 # End of item.py
 
 # Context of delivery.py
@@ -279,6 +281,7 @@ def viewDeliveryByUser(user):
                 "," + delivery[4]) + str("," + delivery[5]) + "\n"
     print(deliveryString)
     return
+
 
 def viewDeliveryByUnassigned():
     # TODO Decorate
@@ -389,13 +392,14 @@ def writeDeliveryFileByReplace(writeDelivery, writeMode):
     writeFileDb.write(writeString)
     writeFileDb.close()
 
+
 def modifyDeliveryStaff():
     return
+
 
 # End of delivery.py
 
 # Context of common.py
-
 
 
 # End of common.py
@@ -443,11 +447,12 @@ def access():
         access()
     return
 
+
 # End of login.py
 
 # Context of order.py
 
-def createOrder(itemId, quantity,username):
+def createOrder(itemId, quantity, username):
     orders = openOrderFile()
     highestId = 0
 
@@ -564,12 +569,13 @@ def writeOrderFileByReplace(writeOrder, writeMode):
         count = count + 1
     writeFileDb.write(writeString)
 
+
 # End of order.py
 
 
 # Context of payment.py
 
-def createPayment(orderId, paymentAmount,user):
+def createPayment(orderId, paymentAmount, user):
     payments = openPaymentFile()
     orders = openOrderFile()
     highestId = 0
@@ -587,7 +593,7 @@ def createPayment(orderId, paymentAmount,user):
     highestId = highestId + 1
     paymentString = "\n" + str(highestId) + ";" + str(orderId) + ";" + str(status) + ";" + str(user)
     writePaymentFile(paymentString)
-    createDelivery(orderId,highestId,user)
+    createDelivery(orderId, highestId, user)
     fakeAction = input("Payment and Delivery created successfully ! Press any Key to go back")
     customerHome()
     return
@@ -634,8 +640,8 @@ def openPaymentFile():
     payments = []
     paymentDb = db = open("db/payment.txt", "r")
     for i in paymentDb:
-        paymentId, orderId, status,userId = i.split(";")
-        payments.append([paymentId, orderId, status,userId])
+        paymentId, orderId, status, userId = i.split(";")
+        payments.append([paymentId, orderId, status, userId])
     return payments
 
 
@@ -661,12 +667,13 @@ def writePaymentFileByReplace(writePayment, writeMode):
     writeFileDb.write(writeString)
     return
 
+
 # End of payment.py
 
 
 # Context of user.py
 
-def checkUserRoleAndRedirect(username,role):
+def checkUserRoleAndRedirect(username, role):
     if role == "admin":
         adminHome()
     elif role == "staff":
@@ -683,15 +690,18 @@ def openUserFile():
         users.append([username.strip(), password.strip(), role.strip()])
     return users
 
+
 def createUser(username, password):
     userString = "\n" + str(username) + ";" + str(password) + ";" + "customer"
     writeUserFile(userString)
     return
 
+
 def createDeliveryStaff(username):
     userString = "\n" + str(username) + ";" + str(1234) + ";" + "staff"
     writeUserFile(userString)
     return
+
 
 def viewDeliveryStaff():
     userDb = openUserFile()
@@ -701,15 +711,17 @@ def viewDeliveryStaff():
             print(staffString)
     return
 
+
 def deleteUser(deleteUserName):
     index = 0
     users = openUserFile()
     for user in users:
-        if user[0] == str (deleteUserName):
+        if user[0] == str(deleteUserName):
             users.pop(index)
         index = index + 1
-    writeUserFileByReplace(users,2)
+    writeUserFileByReplace(users, 2)
     return None
+
 
 def viewCurrentPassword(username):
     users = openUserFile()
@@ -718,6 +730,7 @@ def viewCurrentPassword(username):
             print("Current Password: " + user[1])
     return
 
+
 def changePassword(username, newPassword):
     users = openUserFile()
     for user in users:
@@ -725,10 +738,12 @@ def changePassword(username, newPassword):
             user[1] = newPassword
     writeUserFileByReplace(users, 2)
 
+
 def writeUserFile(writeFile):
     writeFileDb = open("db/user.txt", "a")
     writeFileDb.write(writeFile)
     return
+
 
 def writeUserFileByReplace(users, writeMode):
     writeFileDb = open("db/user.txt", "w")
@@ -744,6 +759,7 @@ def writeUserFileByReplace(users, writeMode):
                 writeString += user[0] + ";" + user[1] + ";" + user[2] + "\n"
         count = count + 1
     writeFileDb.write(writeString)
+
 
 # End of user.py
 
@@ -852,10 +868,6 @@ def deliveryHome(username):
         deliveryHome(username)
     return
 
-
-if __name__ == "__main__":
-    home()
-
 # End of main.py
 
 # Context of menu.py
@@ -880,6 +892,8 @@ def createItemMenu():
     else:
         adminHome()
         return
+
+
 def addItemIntoCategory():
     viewCategory()
     option = input("Do you wish to add item ? 1. Continue, any Key to back")
@@ -896,6 +910,7 @@ def addItemIntoCategory():
     else:
         adminHome()
         return
+
 
 def modifyItemMenu():
     print("Modify Item")
@@ -931,6 +946,7 @@ def viewRecordOfItemMenu():
     option = input("Please any key to back.")
     adminHome()
 
+
 def viewRecordOfItemMenuCustomer(role="admin"):
     viewItem()
     option = input("Please any key to back.")
@@ -939,6 +955,7 @@ def viewRecordOfItemMenuCustomer(role="admin"):
         customerHome()
     adminHome()
     return
+
 
 def viewItemByCategoryMenu(role="admin"):
     viewCategory()
@@ -962,7 +979,8 @@ def viewCustomerPayment():
     viewPayment()
     option = input("Please any key to back.")
     adminHome()
-    return;
+    return
+
 
 def addCategoryMenu():
     print("Existing Category")
@@ -1030,7 +1048,7 @@ def assignOrderForDeliveryStaffMenu():
     orderOption = input("Please select order to assign:")
     viewDeliveryStaff()
     staffOption = input("Please select staff to deliver")
-    assignDeliveryStaff(orderOption,staffOption)
+    assignDeliveryStaff(orderOption, staffOption)
     quitOption = input("Assign successfully, please any key to continue")
     adminHome()
     return
@@ -1042,7 +1060,7 @@ def placeOrderMenu(username):
     if select == str(1):
         orderItem = input("Item:")
         quantity = input("Quantity:")
-        createOrder(orderItem, quantity,username)
+        createOrder(orderItem, quantity, username)
     else:
         customerHome()
     return
@@ -1054,10 +1072,11 @@ def makePaymentMenu(username):
     if select == str(1):
         orderItem = input("Order:")
         paymentAmount = input("Payment Amount:")
-        createPayment(orderItem, paymentAmount,username)
+        createPayment(orderItem, paymentAmount, username)
     else:
         customerHome()
     return
+
 
 def viewDeliveryOrderMenu(username):
     viewDeliveryByUser(username)
@@ -1073,7 +1092,7 @@ def viewDeliveryOrderMenu(username):
     print("3. Onhold")
     print("4. Done")
     status = input("Status:")
-    updateDeliveryStatus(deliveryId,status)
+    updateDeliveryStatus(deliveryId, status)
     print("Update delivery status successfully !")
     option1 = input("Please any key back to menu")
     deliveryHome(username)
@@ -1087,7 +1106,7 @@ def assignDeliveryToMySelfMenu(username):
         deliveryHome(username)
         return
     deliveryId = input("Delivery ID:")
-    assignDeliveryStaff(deliveryId,username)
+    assignDeliveryStaff(deliveryId, username)
     fakeAction = input("Assigned successfully ! Press any Key to go back")
     deliveryHome(username)
 
@@ -1097,7 +1116,7 @@ def changeAccountPasswordMenu(username):
     option = input("Do you wish to change password ? 1. Yes, any Key to go back")
     if option == str(1):
         password = input("Please enter your new password")
-        changePassword(username,password)
+        changePassword(username, password)
         fakeAction = input("Password changed successfully ! Press any Key to go back")
         deliveryHome(username)
     else:
@@ -1132,7 +1151,7 @@ def createDeliveryFeedbackMenu(user):
     viewDeliveryByUser(user)
     deliveryId = input("Delivery Id:")
     feedback = input("Feedback:")
-    createDeliveryFeedback(deliveryId,feedback)
+    createDeliveryFeedback(deliveryId, feedback)
     print("Feedback successfully, press any Key to go back")
     fakeAction = input("Press any Key to go back")
     customerHome()
@@ -1153,3 +1172,6 @@ def searchPaymentByPaymentId():
     adminHome()
 
 # End of menu.py
+
+if __name__ == "__main__":
+    home()
